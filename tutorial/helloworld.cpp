@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 13:31:34 by kchiang           #+#    #+#             */
-/*   Updated: 2026/03/12 15:03:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/03/13 16:11:11 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@
 // copy-list initializer using = {} similar to compound initializer
 int	main(void)
 {
-	int			nb = 42;
-	std::string	str ("Hello world!");
+	int	a;
+	int	b;
+	int	c;
 
-	std::cout << nb << str;
+	std::cout << "Enter three numbers: ";
+	std::cin >> a >> b >> c;
+	std::cout << "You entered " << a << ", " << b << ", and " << c << ".\n";
 	return (0);
 }
