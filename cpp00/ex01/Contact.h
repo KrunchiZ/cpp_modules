@@ -1,0 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/21 01:18:17 by kchiang           #+#    #+#             */
+/*   Updated: 2026/04/21 01:55:36 by kchiang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CONTACT_H
+# define CONTACT_H
+
+# include <string>
+
+class Contact
+{
+public:
+	Contact(int id = 0);
+
+	void	getUserInput();
+
+private:
+	std::string	m_firstName;
+	std::string	m_lastName;
+	std::string	m_nickname;
+	std::string	m_phoneNum;
+	std::string	m_darkSecret;
+	int			m_id;
+};
+
+#endif
