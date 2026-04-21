@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 01:18:17 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/21 17:41:29 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/21 20:13:32 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ public:
 
 	Contact(int id = 0);
 
-	void	requestUserInput(Info e_info);
+	friend void	PhoneBook::setId(int id);
+	friend void	PhoneBook::requestUserInput(Info e_info);
 
 private:
-	void	requestInfo(std::string& field, const std::string& str);
-
 	std::string	m_firstName;
 	std::string	m_lastName;
 	std::string	m_nickname;
