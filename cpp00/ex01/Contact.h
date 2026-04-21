@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 01:18:17 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/21 10:47:26 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/21 15:52:23 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ public:
 	void	getUserInput(Info e_info);
 
 private:
+	void	getInfo(std::string& field, const std::string& str);
+
 	std::string	m_firstName;
 	std::string	m_lastName;
 	std::string	m_nickname;
