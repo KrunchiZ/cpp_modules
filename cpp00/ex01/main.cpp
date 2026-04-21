@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.h                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 00:47:09 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/21 17:27:57 by kchiang          ###   ########.fr       */
+/*   Created: 2026/04/21 17:31:02 by kchiang           #+#    #+#             */
+/*   Updated: 2026/04/21 17:42:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#include "PhoneBook.h"
 
-# include "Contact.h"
-
-class PhoneBook
+int	main(void)
 {
-public:
-	PhoneBook();
-
-	void	add();
-	void	search();
-
-private:
-	Contact	m_contacts[8];
-	int		m_currentId;
-};
-
-#endif
+	PhoneBook	phonebook;
+	return (0);
+}
