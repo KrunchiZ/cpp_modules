@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 01:18:17 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/21 20:13:32 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/21 21:38:35 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 class Contact
 {
 public:
-	enum Info
-	{
-		firstName,
-		lastName,
-		nickname,
-		phoneNum,
-		darkSecret,
-	};
-
 	Contact(int id = 0);
 
-	friend void	PhoneBook::setId(int id);
-	friend void	PhoneBook::requestUserInput(Info e_info);
+	void			setFirstName(std::string& firstName);
+	void			setLastName(std::string& lastName);
+	void			setNickname(std::string& nickname);
+	void			setPhoneNum(std::string& number);
+	void			setDarkSecret(std::string& darkSecret);
+	void			setId(int id);
+	std::string&	getFirstName();
+	std::string&	getLastName();
+	std::string&	getNickname();
+	std::string&	getPhoneNum();
+	std::string&	getDarkSecret();
+	int&			getId();
 
 private:
 	std::string	m_firstName;
