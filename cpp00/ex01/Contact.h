@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 01:18:17 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/21 01:55:36 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/21 10:47:26 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,18 @@
 class Contact
 {
 public:
+	enum Info
+	{
+		firstName,
+		lastName,
+		nickname,
+		phoneNum,
+		darkSecret,
+	};
+
 	Contact(int id = 0);
 
-	void	getUserInput();
+	void	getUserInput(Info e_info);
 
 private:
 	std::string	m_firstName;
