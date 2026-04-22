@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 23:23:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/23 00:05:35 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,15 @@ void	PhoneBook::requestInput(string& buffer, const string& str) const
 {
 	while (buffer.empty())
 	{
-		std::cout << "Please enter " << str << " : ";
+		cout << std::left << setw(30) << "Please enter " + str
+			<< ": " << std::right;
 		std::getline(std::cin, buffer);
+		for (char* str = buffer.c_str(); *str; ++str)
+		{
+			if (std::isprint(*str))
+				continue ;
+			buffer.clear();
+			break ;
+		}
 	}
 }
