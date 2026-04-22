@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/23 00:46:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/23 01:06:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	PhoneBook::add()
 
 void	PhoneBook::search() const
 {
-	if (m_contact[0].getId() == 0)
+	if (m_contacts[0].getId() == 0)
 	{
 		cout << "\n\t* No Entry Found *\n";
 		return ;
