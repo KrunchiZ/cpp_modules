@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 14:46:54 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/22 18:25:59 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Contact.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using std::string;
 
@@ -48,6 +49,9 @@ void	PhoneBook::search()
 		}
 		std::cout << "Please enter Contact Index to display: ";
 		getline(std::cin, str);
+		int id = 0;
+		std:stringstream ss(str);
+		ss >> id;
 	}
 }
 
