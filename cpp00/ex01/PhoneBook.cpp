@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/23 01:06:33 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/23 02:16:06 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,28 @@ void	PhoneBook::add()
 	enterUserInput(m_contacts[m_currentId], darkSecret);
 	m_contacts[m_currentId].setId(m_currentId + 1);
 	++m_currentId %= 8;
+	cout << '\n';
 }
 
 void	PhoneBook::search() const
 {
 	if (m_contacts[0].getId() == 0)
 	{
-		cout << "\n\t* No Entry Found *\n";
+		cout << "\n\t* No Entry Found *\n\n";
 		return ;
 	}
 	for (string str; str.empty(); )
 	{
+		cout << '\n';
 		for (int i = 0; i < 8 && m_contacts[i].getId(); ++i)
 		{
-			cout << '\n' << setw(10) << m_contacts[i].getId() << '|'
+			cout << setw(10) << m_contacts[i].getId() << '|'
 				<< setw(10) << prep_str(m_contacts[i].getFirstName())
 				<< '|' << setw(10) << prep_str(m_contacts[i].getLastName())
 				<< '|' << setw(10) << prep_str(m_contacts[i].getNickname())
-				<< "\n\n";
+				<< '\n';
 		}
-		cout << "Please enter Contact Index to display: ";
+		cout << "\nPlease enter Contact Index to display: ";
 		std::getline(std::cin, str);
 		if (std::cin.eof())
 		{
@@ -72,7 +74,7 @@ void	PhoneBook::search() const
 			if (printContact(id))
 				break ;
 		}
-		cout << "\n\t* Invalid Index *";
+		cout << "\n\t* Invalid Index *\n";
 		str.clear();
 	}
 }
@@ -102,7 +104,7 @@ bool	PhoneBook::is_numeric(const char* str) const
 
 bool	PhoneBook::printContact(int& id) const
 {
-	if (id < 0 || id > 7)
+	if (id < 1 || id > 8)
 		return (false);
 	if (m_contacts[id - 1].getId())
 	{
@@ -160,7 +162,7 @@ void	PhoneBook::requestInput(string& buffer, const string& str,
 {
 	while (buffer.empty())
 	{
-		cout << std::left << setw(30) << "Please enter " + str
+		cout << std::left << setw(30) << "\tPlease enter " + str
 			<< ": " << std::right;
 		std::getline(std::cin, buffer);
 		if (std::cin.eof())
@@ -173,7 +175,7 @@ void	PhoneBook::requestInput(string& buffer, const string& str,
 			if (isNum && (std::isdigit(static_cast<unsigned char>(*str))
 					|| *str == '-'))
 				continue ;
-			if (std::isprint(static_cast<unsigned char>(*str)))
+			if (!isNum && std::isprint(static_cast<unsigned char>(*str)))
 				continue ;
 			std::cout << "\t* Invalid Character Detected *\n";
 			buffer.clear();
