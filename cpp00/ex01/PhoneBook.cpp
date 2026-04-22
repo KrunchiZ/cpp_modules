@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/23 00:06:46 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/23 00:21:32 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,27 +115,28 @@ bool	PhoneBook::printContact(int& id) const
 void	PhoneBook::enterUserInput(Contact& contact, Info e_info)
 {
 	string	buffer;
+	bool	isNum = true;
 
 	switch (e_info)
 	{
 		case firstName:
-			requestInput(buffer, "first name");
+			requestInput(buffer, "first name", !isNum);
 			contact.setFirstName(buffer);
 			return ;
 		case lastName:
-			requestInput(buffer, "last name");
+			requestInput(buffer, "last name", !isNum);
 			contact.setLastName(buffer);
 			return ;
 		case nickname:
-			requestInput(buffer, "nickname");
+			requestInput(buffer, "nickname", !isNum);
 			contact.setNickname(buffer);
 			return ;
 		case phoneNum:
-			requestInput(buffer, "phone number");
+			requestInput(buffer, "phone number", isNum);
 			contact.setPhoneNum(buffer);
 			return ;
 		case darkSecret:
-			requestInput(buffer, "darkest secret");
+			requestInput(buffer, "darkest secret", !isNum);
 			contact.setDarkSecret(buffer);
 			return ;
 		default:
@@ -143,7 +144,8 @@ void	PhoneBook::enterUserInput(Contact& contact, Info e_info)
 	}
 }
 
-void	PhoneBook::requestInput(string& buffer, const string& str) const
+void	PhoneBook::requestInput(string& buffer, const string& str,
+			bool isNum) const
 {
 	while (buffer.empty())
 	{
@@ -152,8 +154,12 @@ void	PhoneBook::requestInput(string& buffer, const string& str) const
 		std::getline(std::cin, buffer);
 		for (const char* str = buffer.c_str(); *str; ++str)
 		{
-			if (std::isprint(*str))
+			if (isNum && (std::isdigit(static_cast<unsigned char>(*str))
+					|| *str == '-'))
 				continue ;
+			if (std::isprint(static_cast<unsigned char>(*str)))
+				continue ;
+			cout << "\t* Invalid Character Detected *\n";
 			buffer.clear();
 			break ;
 		}

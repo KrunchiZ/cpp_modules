@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 00:47:09 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 23:02:49 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/23 00:21:01 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ public:
 
 private:
 	void	enterUserInput(Contact& contact, Info e_info);
-	void	requestInput(std::string& field, const std::string& str) const;
+	void	requestInput(std::string& field, const std::string& str,
+				bool isNum) const;
 	bool	is_numeric(const char* str) const;
 	bool	printContact(int& id) const;
 
