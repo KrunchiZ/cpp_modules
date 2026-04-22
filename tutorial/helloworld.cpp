@@ -6,11 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 13:31:34 by kchiang           #+#    #+#             */
-/*   Updated: 2026/03/18 16:29:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/22 14:05:31 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
 
 // copy initializer using =
@@ -19,12 +20,7 @@
 // copy-list initializer using = {} similar to compound initializer
 int	main(void)
 {
-	int	a;
-	int	b;
-	int	c;
-
-	std::cout << "Enter three numbers: ";
-	std::cin >> a >> b >> c;
-	std::cout << "You entered " << a << ", " << b << ", and " << c << ".\n";
+	std::cout << std::setw(10)
+		<< std::string("Enter three numbers").substr(0, 9) + "." << "\n";
 	return (EXIT_SUCCESS);
 }
