@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 22:25:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/22 22:36:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	PhoneBook::search()
 	for (string str = ""; str == ""; )
 	{
 		cout << "\nPlease enter Contact Index to display: ";
-		getline(std::cin, str);
+		std::getline(std::cin, str);
 		if (is_numeric(str.c_str()))
 		{
 			std::stringstream ss(str);
