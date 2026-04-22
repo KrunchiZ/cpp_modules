@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/23 00:37:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/23 00:46:06 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	PhoneBook::add()
 
 void	PhoneBook::search() const
 {
+	if (m_contact[0].getId() == 0)
+	{
+		cout << "\n\t* No Entry Found *\n";
+		return ;
+	}
 	for (string str; str.empty(); )
 	{
 		for (int i = 0; i < 8 && m_contacts[i].getId(); ++i)
@@ -55,7 +60,10 @@ void	PhoneBook::search() const
 		cout << "Please enter Contact Index to display: ";
 		std::getline(std::cin, str);
 		if (std::cin.eof())
+		{
+			cout << "\n\t* EOF detected. Terminating program. *\n";
 			std::exit(EXIT_FAILURE);
+		}
 		if (is_numeric(str.c_str()))
 		{
 			std::stringstream ss(str);
@@ -64,7 +72,7 @@ void	PhoneBook::search() const
 			if (printContact(id))
 				break ;
 		}
-		std::cerr << "\n\t* Invalid Index *";
+		cout << "\n\t* Invalid Index *";
 		str.clear();
 	}
 }
@@ -156,7 +164,10 @@ void	PhoneBook::requestInput(string& buffer, const string& str,
 			<< ": " << std::right;
 		std::getline(std::cin, buffer);
 		if (std::cin.eof())
+		{
+			cout << "\n\t* EOF detected. Terminating program. *\n";
 			std::exit(EXIT_FAILURE);
+		}
 		for (const char* str = buffer.c_str(); *str; ++str)
 		{
 			if (isNum && (std::isdigit(static_cast<unsigned char>(*str))
@@ -164,7 +175,7 @@ void	PhoneBook::requestInput(string& buffer, const string& str,
 				continue ;
 			if (std::isprint(static_cast<unsigned char>(*str)))
 				continue ;
-			std::cerr << "\t* Invalid Character Detected *\n";
+			std::cout << "\t* Invalid Character Detected *\n";
 			buffer.clear();
 			break ;
 		}
