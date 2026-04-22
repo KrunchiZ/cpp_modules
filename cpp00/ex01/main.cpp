@@ -6,13 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:31:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 23:04:34 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/23 00:38:17 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.h"
 #include <string>
 #include <iostream>
+#include <cstdlib>
 
 using std::string;
 using std::cout;
@@ -26,6 +27,8 @@ int	main(void)
 	{
 		cout << "Please enter command [ADD / SEARCH / EXIT]: ";
 		std::getline(std::cin, cmdInput);
+		if (std::cin.eof())
+			std::exit(EXIT_FAILURE);
 		if (cmdInput == "ADD")
 			phoneBook.add();
 		else if (cmdInput == "SEARCH")
@@ -34,5 +37,5 @@ int	main(void)
 			break ;
 		cmdInput.clear();
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
