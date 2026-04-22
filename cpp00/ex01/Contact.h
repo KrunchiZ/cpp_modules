@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 01:18:17 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 14:37:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/22 23:04:05 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ public:
 	void	setDarkSecret(std::string& darkSecret);
 	void	setId(int id);
 
-	const std::string&	getFirstName();
-	const std::string&	getLastName();
-	const std::string&	getNickname();
-	const std::string&	getPhoneNum();
-	const std::string&	getDarkSecret();
-	const int&			getId();
+	const std::string&	getFirstName() const;
+	const std::string&	getLastName() const;
+	const std::string&	getNickname() const;
+	const std::string&	getPhoneNum() const;
+	const std::string&	getDarkSecret() const;
+	const int&			getId() const;
 
 private:
 	std::string	m_firstName;

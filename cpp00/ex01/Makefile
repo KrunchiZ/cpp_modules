@@ -1,8 +1,10 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-NAME		= phonebook
-SRC			= megaphone.cpp
+NAME		= myAwesomePhoneBook
+SRC			= main.cpp		\
+			  PhoneBook.cpp	\
+			  Contact.cpp
 
 OBJS_DIR	= build/
 

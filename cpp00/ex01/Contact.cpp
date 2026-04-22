@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:03:10 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 14:34:46 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/22 23:07:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	Contact::setPhoneNum(string& phoneNum) {m_phoneNum = phoneNum;}
 void	Contact::setDarkSecret(string& darkSecret) {m_darkSecret = darkSecret;}
 void	Contact::setId(int id) {m_id = id;}
 
-const string&	Contact::getFirstName() {return (m_firstName);}
-const string&	Contact::getLastName() {return (m_lastName);}
-const string&	Contact::getNickname() {return (m_nickame);}
-const string&	Contact::getPhoneNum() {return (m_phoneNum);}
-const string&	Contact::getDarkSecret() {return (m_darkSecret);}
-const int&		Contact::getId() {return (m_id);}
+const string&	Contact::getFirstName() const {return (m_firstName);}
+const string&	Contact::getLastName() const {return (m_lastName);}
+const string&	Contact::getNickname() const {return (m_nickname);}
+const string&	Contact::getPhoneNum() const {return (m_phoneNum);}
+const string&	Contact::getDarkSecret() const {return (m_darkSecret);}
+const int&		Contact::getId() const {return (m_id);}

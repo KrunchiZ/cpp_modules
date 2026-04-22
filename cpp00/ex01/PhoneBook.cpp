@@ -6,13 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 22:46:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/22 23:19:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.h"
 #include "Contact.h"
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <sstream>
 #include <cctype>
@@ -28,27 +29,28 @@ PhoneBook::PhoneBook()
 
 void	PhoneBook::add()
 {
-	enterUserInput(m_contacts[m_currentId], Contact::firstName);
-	enterUserInput(m_contacts[m_currentId], Contact::lastName);
-	enterUserInput(m_contacts[m_currentId], Contact::nickname);
-	enterUserInput(m_contacts[m_currentId], Contact::phoneNum);
-	enterUserInput(m_contacts[m_currentId], Contact::darkSecret);
+	enterUserInput(m_contacts[m_currentId], firstName);
+	enterUserInput(m_contacts[m_currentId], lastName);
+	enterUserInput(m_contacts[m_currentId], nickname);
+	enterUserInput(m_contacts[m_currentId], phoneNum);
+	enterUserInput(m_contacts[m_currentId], darkSecret);
 	m_contacts[m_currentId].setId(m_currentId + 1);
 	++m_currentId %= 8;
 }
 
-void	PhoneBook::search()
+void	PhoneBook::search() const
 {
-	for (int i = 0; i < 8 && m_contacts[i].getId(); ++i)
+	for (string str; str.empty(); )
 	{
-		cout << setw(10) << m_contacts[i].getId() << '|'
-			<< setw(10) << prep_str(m_contacts[i].getFirstName())
-			<< '|' << setw(10) << prep_str(m_contacts[i].getLastName())
-			<< '|' << setw(10) << prep_str(m_contacts[i].getNickname()) << '\n';
-	}
-	for (string str(); str.empty(); )
-	{
-		cout << "\nPlease enter Contact Index to display: ";
+		for (int i = 0; i < 8 && m_contacts[i].getId(); ++i)
+		{
+			cout << '\n' << setw(10) << m_contacts[i].getId() << '|'
+				<< setw(10) << prep_str(m_contacts[i].getFirstName())
+				<< '|' << setw(10) << prep_str(m_contacts[i].getLastName())
+				<< '|' << setw(10) << prep_str(m_contacts[i].getNickname())
+				<< "\n\n";
+		}
+		cout << "Please enter Contact Index to display: ";
 		std::getline(std::cin, str);
 		if (is_numeric(str.c_str()))
 		{
@@ -58,7 +60,7 @@ void	PhoneBook::search()
 			if (printContact(id))
 				break ;
 		}
-		cout << "\t* Invalid Index *\n";
+		cout << "\n\t* Invalid Index *\n";
 		str.clear();
 	}
 }
@@ -67,14 +69,14 @@ void	PhoneBook::search()
  *  NOTE: Helper functions for PhoneBook::search()
  * */
 
-const string	PhoneBook::prep_str(const string& str)
+const string	PhoneBook::prep_str(const string& str) const
 {
 	if (str.length() <= 10)
 		return (str);
 	return (str.substr(0, 9) + '.');
 }
 
-const bool	PhoneBook::is_numeric(const char* str)
+bool	PhoneBook::is_numeric(const char* str) const
 {
 	if (*str == '+' || *str == '-')
 		++str;
@@ -86,22 +88,23 @@ const bool	PhoneBook::is_numeric(const char* str)
 	return (true);
 }
 
-const bool	PhoneBook::printContact(int& id)
+bool	PhoneBook::printContact(int& id) const
 {
 	if (id < 0 || id > 7)
 		return (false);
 	if (m_contacts[id - 1].getId())
 	{
-		cout << setw(20) << "First Name: " << m_contacts[id - 1].getFirstName()
-			<< '\n' << setw(20) << "Last Name: "
-			<< m_contacts[id - 1].getLastName() << '\n' << setw(20)
-			<< "Nickname: " << m_contacts[id - 1].getNickname() << '\n'
-			<< setw(20) << "Phone Number: " << m_contacts[id - 1].getPhoneNum()
-			<< '\n' << setw(20) << "Darkest Secret: "
-			<< m_contacts[id - 1].getDarkSecret() << '\n\n';
+		cout << "\n\t" << std::left << setw(20) << "First Name" << ": "
+			<< m_contacts[id - 1].getFirstName() << "\n\t" << setw(20)
+			<< "Last Name" << ": " << m_contacts[id - 1].getLastName()
+			<< "\n\t" << setw(20) << "Nickname" << ": "
+			<< m_contacts[id - 1].getNickname() << "\n\t" << setw(20)
+			<< "Phone Number" << ": " << m_contacts[id - 1].getPhoneNum()
+			<< "\n\t" << setw(20) << "Darkest Secret" << ": "
+			<< m_contacts[id - 1].getDarkSecret() << "\n\n" << std::right;
 		return (true);
 	}
-	return (false)
+	return (false);
 }
 
 /* *****************************************************************************
@@ -110,7 +113,7 @@ const bool	PhoneBook::printContact(int& id)
 
 void	PhoneBook::enterUserInput(Contact& contact, Info e_info)
 {
-	string	buffer("");
+	string	buffer;
 
 	switch (e_info)
 	{
@@ -139,9 +142,9 @@ void	PhoneBook::enterUserInput(Contact& contact, Info e_info)
 	}
 }
 
-void	PhoneBook::requestInput(string& buffer, const string& str)
+void	PhoneBook::requestInput(string& buffer, const string& str) const
 {
-	while (buffer == "")
+	while (buffer.empty())
 	{
 		std::cout << "Please enter " << str << " : ";
 		std::getline(std::cin, buffer);
