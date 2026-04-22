@@ -1,7 +1,7 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-NAME		= myAwesomePhoneBook
+NAME		= awesomePhoneBook
 SRC			= main.cpp		\
 			  PhoneBook.cpp	\
 			  Contact.cpp
