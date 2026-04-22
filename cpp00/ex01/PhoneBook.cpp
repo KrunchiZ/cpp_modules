@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 23:19:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/22 23:23:48 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ PhoneBook::PhoneBook()
 
 void	PhoneBook::add()
 {
+	cout << '\n';
 	enterUserInput(m_contacts[m_currentId], firstName);
 	enterUserInput(m_contacts[m_currentId], lastName);
 	enterUserInput(m_contacts[m_currentId], nickname);
