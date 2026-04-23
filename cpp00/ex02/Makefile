@@ -1,10 +1,9 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-NAME		= awesomePhoneBook
-SRC			= main.cpp		\
-			  PhoneBook.cpp	\
-			  Contact.cpp
+NAME		= account
+SRC			= tests.cpp		\
+			  Account.cpp
 
 OBJS_DIR	= build/
 
