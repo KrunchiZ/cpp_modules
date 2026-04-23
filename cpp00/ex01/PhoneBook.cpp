@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/23 02:16:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/23 15:56:27 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ PhoneBook::PhoneBook()
 
 void	PhoneBook::add()
 {
-	cout << '\n';
+	cout << "\nWriting to Index #" << m_currentId + 1 << '\n';
 	enterUserInput(m_contacts[m_currentId], firstName);
 	enterUserInput(m_contacts[m_currentId], lastName);
 	enterUserInput(m_contacts[m_currentId], nickname);
@@ -50,7 +50,9 @@ void	PhoneBook::search() const
 	}
 	for (string str; str.empty(); )
 	{
-		cout << '\n';
+		cout << '\n' << setw(10) << "Index" << '|' << setw(10) << "First Name"
+			<< '|' << setw(10) << "Last Name" << '|' << setw(10) << "Nickname"
+			<< '\n' << "--------------------------------------------\n";
 		for (int i = 0; i < 8 && m_contacts[i].getId(); ++i)
 		{
 			cout << setw(10) << m_contacts[i].getId() << '|'
@@ -59,7 +61,7 @@ void	PhoneBook::search() const
 				<< '|' << setw(10) << prep_str(m_contacts[i].getNickname())
 				<< '\n';
 		}
-		cout << "\nPlease enter Contact Index to display: ";
+		cout << "\nPlease enter Contact Index to display ([0]->Main Menu): ";
 		std::getline(std::cin, str);
 		if (std::cin.eof())
 		{
@@ -104,6 +106,8 @@ bool	PhoneBook::is_numeric(const char* str) const
 
 bool	PhoneBook::printContact(int& id) const
 {
+	if (!id)
+		return (true);
 	if (id < 1 || id > 8)
 		return (false);
 	if (m_contacts[id - 1].getId())
@@ -170,12 +174,15 @@ void	PhoneBook::requestInput(string& buffer, const string& str,
 			cout << "\n\t* EOF detected. Terminating program. *\n";
 			std::exit(EXIT_FAILURE);
 		}
-		for (const char* str = buffer.c_str(); *str; ++str)
+		if (buffer.empty())
+			cout << "\t* No Empty Field *\n";
+		const char* str = buffer.c_str();
+		for (int i = 0; str[i]; ++i)
 		{
-			if (isNum && (std::isdigit(static_cast<unsigned char>(*str))
-					|| *str == '-'))
-				continue ;
-			if (!isNum && std::isprint(static_cast<unsigned char>(*str)))
+			if ((isNum && i == 0 && str[i] == '+')
+				|| (!isNum && std::isprint(static_cast<unsigned char>(str[i])))
+				|| (isNum && (std::isdigit(static_cast<unsigned char>(str[i]))
+					|| str[i] == '-')))
 				continue ;
 			std::cout << "\t* Invalid Character Detected *\n";
 			buffer.clear();
