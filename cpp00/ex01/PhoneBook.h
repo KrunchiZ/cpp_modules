@@ -6,15 +6,16 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 00:47:09 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/23 00:21:01 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/24 13:51:50 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#define PHONEBOOK_H
 
-# include "Contact.h"
-# include <string>
+#include "Contact.h"
+#include <string>
 
 class PhoneBook
 {

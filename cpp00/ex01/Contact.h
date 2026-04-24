@@ -6,14 +6,15 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 01:18:17 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/22 23:04:05 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/24 13:51:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #ifndef CONTACT_H
-# define CONTACT_H
+#define CONTACT_H
 
-# include <string>
+#include <string>
 
 class Contact
 {
