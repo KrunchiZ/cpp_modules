@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 01:42:11 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/24 04:36:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/24 18:34:22 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	Account::makeDeposit(int deposit)
 {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";p_amount:" << _amount
-		<< ";deposits:" << deposit << ";amount:";
+		<< ";deposit:" << deposit << ";amount:";
 	_amount += deposit;
 	_totalAmount += deposit;
 	++_nbDeposits;
