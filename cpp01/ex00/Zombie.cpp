@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 19:26:42 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/26 21:59:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/26 22:01:53 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ Zombie::Zombie(const std::string& str)
 
 Zombie::~Zombie()
 {
-	std::cout << name << ": BlehhhzzzZ...\n";
+	std::cout << "Destroyed Zombie " << name << '\n';
 }
 
 void	Zombie::announce(void)
 {
-	std::cout << "Destroyed Zombie " << name << '\n';
+	std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
 }
