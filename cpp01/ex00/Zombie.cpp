@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 19:26:42 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/26 21:36:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/26 21:56:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 Zombie::Zombie(const std::string& str)
 	: name(str)
 {
-	announce();
+	std::cout << "Constructed Zombie " << name << '\n';
 }
 
 Zombie::~Zombie()
