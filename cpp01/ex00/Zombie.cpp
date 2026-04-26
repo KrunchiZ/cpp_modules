@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 19:26:42 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/26 21:56:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/26 21:59:50 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ Zombie::~Zombie()
 
 void	Zombie::announce(void)
 {
-	std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
+	std::cout << "Destroyed Zombie " << name << '\n';
 }
