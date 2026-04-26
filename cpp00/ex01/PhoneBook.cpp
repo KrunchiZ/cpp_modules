@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/23 15:56:27 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/27 03:25:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ PhoneBook::PhoneBook()
 void	PhoneBook::add()
 {
 	cout << "\nWriting to Index #" << m_currentId + 1 << '\n';
-	enterUserInput(m_contacts[m_currentId], firstName);
-	enterUserInput(m_contacts[m_currentId], lastName);
-	enterUserInput(m_contacts[m_currentId], nickname);
-	enterUserInput(m_contacts[m_currentId], phoneNum);
-	enterUserInput(m_contacts[m_currentId], darkSecret);
+	if (!enterUserInput(m_contacts[m_currentId], firstName)
+		|| !enterUserInput(m_contacts[m_currentId], lastName)
+		|| !enterUserInput(m_contacts[m_currentId], nickname)
+		|| !enterUserInput(m_contacts[m_currentId], phoneNum)
+		|| !enterUserInput(m_contacts[m_currentId], darkSecret))
+		return ;
 	m_contacts[m_currentId].setId(m_currentId + 1);
 	++m_currentId %= 8;
 	cout << '\n';
@@ -64,10 +65,7 @@ void	PhoneBook::search() const
 		cout << "\nPlease enter Contact Index to display ([0]->Main Menu): ";
 		std::getline(std::cin, str);
 		if (std::cin.eof())
-		{
-			cout << "\n\t* EOF detected. Terminating program. *\n";
-			std::exit(EXIT_FAILURE);
-		}
+			return ;
 		if (is_numeric(str.c_str()))
 		{
 			std::stringstream ss(str);
@@ -129,39 +127,40 @@ bool	PhoneBook::printContact(int& id) const
  *  NOTE: Helper functions for PhoneBook::add()
  * */
 
-void	PhoneBook::enterUserInput(Contact& contact, Info e_info)
+bool	PhoneBook::enterUserInput(Contact& contact, Info e_info)
 {
 	string	buffer;
+	bool	inputRequested = true;
 	bool	isNum = true;
 
 	switch (e_info)
 	{
 		case firstName:
-			requestInput(buffer, "first name", !isNum);
+			inputRequested = requestInput(buffer, "first name", !isNum);
 			contact.setFirstName(buffer);
-			return ;
+			return (inputRequested);
 		case lastName:
-			requestInput(buffer, "last name", !isNum);
+			inputRequested = requestInput(buffer, "last name", !isNum);
 			contact.setLastName(buffer);
-			return ;
+			return (inputRequested);
 		case nickname:
-			requestInput(buffer, "nickname", !isNum);
+			inputRequested = requestInput(buffer, "nickname", !isNum);
 			contact.setNickname(buffer);
-			return ;
+			return (inputRequested);
 		case phoneNum:
-			requestInput(buffer, "phone number", isNum);
+			inputRequested = requestInput(buffer, "phone number", isNum);
 			contact.setPhoneNum(buffer);
-			return ;
+			return (inputRequested);
 		case darkSecret:
-			requestInput(buffer, "darkest secret", !isNum);
+			inputRequested = requestInput(buffer, "darkest secret", !isNum);
 			contact.setDarkSecret(buffer);
-			return ;
+			return (inputRequested);
 		default:
-			return ;
+			return (inputRequested);
 	}
 }
 
-void	PhoneBook::requestInput(string& buffer, const string& str,
+bool	PhoneBook::requestInput(string& buffer, const string& str,
 			bool isNum) const
 {
 	while (buffer.empty())
@@ -170,10 +169,7 @@ void	PhoneBook::requestInput(string& buffer, const string& str,
 			<< ": " << std::right;
 		std::getline(std::cin, buffer);
 		if (std::cin.eof())
-		{
-			cout << "\n\t* EOF detected. Terminating program. *\n";
-			std::exit(EXIT_FAILURE);
-		}
+			return (false);
 		if (buffer.empty())
 			cout << "\t* No Empty Field *\n";
 		const char* str = buffer.c_str();
@@ -189,4 +185,5 @@ void	PhoneBook::requestInput(string& buffer, const string& str,
 			break ;
 		}
 	}
+	return (true);
 }

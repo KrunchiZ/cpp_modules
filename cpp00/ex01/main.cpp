@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:31:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/23 00:46:20 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/27 03:13:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int	main(void)
 		else if (cmdInput == "EXIT")
 			break ;
 		cmdInput.clear();
+		if (std::cin.eof())
+		{
+			cout << "\n\t* EOF detected. Terminating program. *\n";
+			break ;
+		}
 	}
 	return (EXIT_SUCCESS);
 }

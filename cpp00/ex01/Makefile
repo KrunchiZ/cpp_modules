@@ -1,5 +1,5 @@
 CPP			= c++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -g3 -O0
 
 NAME		= awesomePhoneBook
 SRC			= main.cpp		\
