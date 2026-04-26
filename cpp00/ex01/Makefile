@@ -10,8 +10,7 @@ OBJS_DIR	= build/
 
 OBJS		= $(SRC:.cpp=.o)
 BUILD_OBJS	= $(addprefix $(OBJS_DIR), $(OBJS))
-
-vpath %.o $(OBJS_DIR)
+DEPS		= $(BUILD_OBJS:.o=.d)
 
 GREEN	= \e[32m
 CYAN	= \e[36m
@@ -22,15 +21,15 @@ WHITE	= \e[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS_DIR) $(OBJS)
+$(NAME): $(OBJS_DIR) $(BUILD_OBJS)
 	$(CPP) $(CPPFLAGS) $(BUILD_OBJS) -o $(NAME)
 	echo "Making $(GREEN)$(NAME)$(WHITE)..."
 
 $(OBJS_DIR):
 	mkdir $(OBJS_DIR)
 
-%.o: %.cpp
-	$(CPP) $(CPPFLAGS) -c $< -o $(addprefix $(OBJS_DIR), $@)
+$(OBJS_DIR)%.o: %.cpp
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 	echo "Compiling $(CYAN)$@$(WHITE)..."
 
 fclean: clean
@@ -42,3 +41,5 @@ clean:
 	echo "Removing $(CYAN)object$(WHITE) files..."
 
 re: fclean all
+
+-include $(DEPS)
