@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 15:32:10 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/27 16:24:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/27 17:39:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "HumanB.h"
 #include <string>
 #include <iostream>
-#include <cstdlib>
+#include <cstddef>
 
 using std::string;
 
