@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 18:23:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/28 00:17:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/28 00:27:29 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ void	parseLine(ifstream& inFile, ofstream& outFile,
 			pos = line.find(s1, pos);
 		}
 		outFile << line;
+		if (!inFile.eof())
+			outFile << '\n';
 		line.clear();
 	}
 }
