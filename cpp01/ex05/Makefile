@@ -1,7 +1,7 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-NAME		= ex04
+NAME		= ex05
 SRC			= main.cpp	\
 			  Harl.cpp
 

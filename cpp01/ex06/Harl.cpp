@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 00:46:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/28 02:53:15 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/04/28 12:13:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 Harl::Harl() {std::cout << "Harl has entered the chat.\n";}
 Harl::~Harl() {std::cout << "Harl has left the chat.\n";}
 
-void	Harl::debug(void) {std::cout << "This is a DEBUG complain\n";}
-void	Harl::info(void) {std::cout << "This is a INFO complain.\n";}
-void	Harl::warning(void) {std::cout << "This is a WARNING complain\n";}
-void	Harl::error(void) {std::cout << "This is a ERROR complain\n";}
+void	Harl::debug(void) {std::cout << "This is a DEBUG complaint.\n";}
+void	Harl::info(void) {std::cout << "This is a INFO complaint.\n";}
+void	Harl::warning(void) {std::cout << "This is a WARNING complaint.\n";}
+void	Harl::error(void) {std::cout << "This is a ERROR complaint.\n";}
 
 void	Harl::complain(std::string level)
 {
