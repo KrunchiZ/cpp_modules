@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.h                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 19:28:01 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/05 22:54:15 by kchiang          ###   ########.fr       */
+/*   Created: 2026/05/05 22:55:08 by kchiang           #+#    #+#             */
+/*   Updated: 2026/05/05 22:56:44 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-class Fixed
+#include "Fixed.h"
+#include <iostream>
+
+int	main(void)
 {
-public:
-	Fixed();
-	Fixed(const Fixed& other);
-	~Fixed();
+	Fixed	a;
+	Fixed	b( a );
+	Fixed	c;
 
-	Fixed&	operator=(const Fixed& rhs);
-	
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
+	c = b;
 
-private:
-	static const int	s_fracBits;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 	
-	int	m_rawBits;
-};
+	return (0);
+}
