@@ -6,13 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 17:08:32 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 17:49:52 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/06 18:15:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.h"
 #include "Fixed.h"
-#include <cmath>
 
 namespace
 {
