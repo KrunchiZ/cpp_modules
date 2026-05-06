@@ -6,11 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:06:58 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 17:07:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:08:53 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
+#include "Point.h"
 
 Point::Point()
 	: x(0), y(0)
