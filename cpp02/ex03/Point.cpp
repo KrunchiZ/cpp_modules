@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:06:58 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 17:08:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:13:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ Point::~Point()
 
 Point&	Point::operator=(const Point&) {return (*this);}
 
-const Fixed&	Point::getX() {return (this->x);}
-const Fixed&	Point::getY() {return (this->y);}
+const Fixed&	Point::getX() const {return (this->x);}
+const Fixed&	Point::getY() const {return (this->y);}
