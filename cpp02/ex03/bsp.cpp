@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 17:08:32 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 17:33:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:49:52 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,15 @@ Fixed	calculateArea(const Point p1, const Point p2, const Point p3)
 
 bool	bsp(const Point a, const Point b, const Point c, const Point point)
 {
+	if (point == a || point == b || point == c)
+		return (false);
+
 	const Fixed	triangleArea(calculateArea(a, b, c));
 	const Fixed	areaABP(calculateArea(a, b, point));
 	const Fixed	areaACP(calculateArea(a, c, point));
 	const Fixed	areaBCP(calculateArea(b, c, point));
 
-	return (areaABP + areaACP + areaBCP == triangleArea);
+	if (areaABP.getRawBits() && areaACP.getRawBits() && areaBCP.getRawBits())
+		return (areaABP + areaACP + areaBCP == triangleArea);
+	return (false);
 }

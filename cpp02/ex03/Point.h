@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:01:56 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 17:13:20 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/06 18:06:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@ private:
 	const Fixed	x;
 	const Fixed	y;
 };
+
+std::ostream&	operator<<(std::ostream& out, const Point& point);
+bool			operator==(const Point& lhs, const Point& rhs);
+bool			operator!=(const Point& lhs, const Point& rhs);
 
 #endif
