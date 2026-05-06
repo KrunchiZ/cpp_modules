@@ -3,7 +3,9 @@ CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 NAME		= bsp
 SRC			= main.cpp	\
-			  Fixed.cpp
+			  Fixed.cpp	\
+			  Point.cpp	\
+			  bsp.cpp
 
 OBJS_DIR	= build/
 
