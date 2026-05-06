@@ -6,22 +6,32 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:06:58 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 16:07:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/06 17:07:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
 
 Point::Point()
+	: x(0), y(0)
 {
 }
 
-Point::Point(const Point& other) {*this = other;}
+Point::Point(const float f1, const float f2)
+	: x(f1), y(f2)
+{
+}
+
+Point::Point(const Point& other)
+	: x(other.x), y(other.y)
+{
+}
 
 Point::~Point()
 {
 }
 
-Point&	Point::operator=(const Point& rhs)
-{
-}
+Point&	Point::operator=(const Point&) {return (*this);}
+
+const Fixed&	Point::getX() {return (this->x);}
+const Fixed&	Point::getY() {return (this->y);}
