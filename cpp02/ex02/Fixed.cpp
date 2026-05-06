@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 20:53:23 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 02:04:23 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/06 15:48:38 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,6 @@ Fixed::Fixed(const Fixed& other)
 
 Fixed::~Fixed() {std::cout << "Destructor called\n";}
 
-Fixed&	Fixed::operator=(const Fixed& rhs)
-{
-	std::cout << "Copy assignment operator called\n";
-	this->m_rawBits = rhs.m_rawBits;
-	return (*this);
-}
-
 int		Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called\n";
@@ -71,7 +64,136 @@ int		Fixed::toInt() const
 	return (m_rawBits >> s_fracBits);
 }
 
+/*  NOTE:******************************************************************** */
+/*                                                                            */
+/* Static Member Function                                                     */
+/*                                                                            */
 /* ************************************************************************** */
+
+Fixed&	Fixed::min(Fixed& f1, Fixed& f2)
+{
+	return ((f1 <= f2) ? f1 : f2);
+}
+
+Fixed&	Fixed::max(Fixed& f1, Fixed& f2)
+{
+	return ((f1 >= f2) ? f1 : f2);
+}
+
+const Fixed&	Fixed::min(const Fixed& f1, const Fixed& f2)
+{
+	return ((f1 <= f2) ? f1 : f2);
+}
+
+const Fixed&	Fixed::max(const Fixed& f1, const Fixed& f2)
+{
+	return ((f1 >= f2) ? f1 : f2);
+}
+
+/*  NOTE:******************************************************************** */
+/*                                                                            */
+/* Member Operator Function Overload                                          */
+/*                                                                            */
+/* ************************************************************************** */
+
+Fixed&	Fixed::operator=(const Fixed& rhs)
+{
+	std::cout << "Copy assignment operator called\n";
+	this->m_rawBits = rhs.m_rawBits;
+	return (*this);
+}
+
+bool	Fixed::operator>(const Fixed& rhs) const
+{
+	return (this->m_rawBits > rhs.m_rawBits);
+}
+
+bool	Fixed::operator<(const Fixed& rhs) const
+{
+	return (rhs > *this);
+}
+
+bool	Fixed::operator>=(const Fixed& rhs) const
+{
+	return (!(*this < rhs));
+}
+
+bool	Fixed::operator<=(const Fixed& rhs) const
+{
+	return (!(*this > rhs));
+}
+
+bool	Fixed::operator==(const Fixed& rhs) const
+{
+	return (this->m_rawBits == rhs.m_rawBits);
+}
+
+bool	Fixed::operator!=(const Fixed& rhs) const
+{
+	return (!(*this == rhs));
+}
+
+Fixed	Fixed::operator+(const Fixed& rhs) const
+{
+	Fixed	tmp;
+
+	tmp.m_rawBits = this->m_rawBits + rhs.m_rawBits;
+	return (tmp);
+}
+
+Fixed	Fixed::operator-(const Fixed& rhs) const
+{
+	Fixed	tmp;
+
+	tmp.m_rawBits = this->m_rawBits - rhs.m_rawBits;
+	return (tmp);
+}
+
+Fixed	Fixed::operator*(const Fixed& rhs) const
+{
+	Fixed	tmp;
+
+	tmp.m_rawBits = this->m_rawBits * rhs.m_rawBits >> s_fracBits;
+	return (tmp);
+}
+
+Fixed	Fixed::operator/(const Fixed& rhs) const
+{
+	Fixed	tmp;
+
+	tmp.m_rawBits = (this->m_rawBits << s_fracBits) / rhs.m_rawBits;
+	return (tmp);
+}
+
+Fixed&	Fixed::operator++()
+{
+	++this->m_rawBits;
+	return (*this);
+}
+
+Fixed&	Fixed::operator--()
+{
+	--this->m_rawBits;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	tmp(*this);
+
+	++this->m_rawBits;
+	return (tmp);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	tmp(*this);
+
+	--this->m_rawBits;
+	return (tmp);
+}
+
+/*  NOTE:******************************************************************** */
 /*                                                                            */
 /* Non-member Operator Function Overload                                      */
 /*                                                                            */
