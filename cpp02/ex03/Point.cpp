@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.h                                            :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 19:28:01 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 16:09:35 by kchiang          ###   ########.fr       */
+/*   Created: 2026/05/06 16:06:58 by kchiang           #+#    #+#             */
+/*   Updated: 2026/05/06 16:07:19 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef FIXED_H
-#define FIXED_H
+#include "Fixed.h"
 
-class Fixed
+Point::Point()
 {
-public:
-	Fixed();
-	Fixed(const Fixed& other);
-	~Fixed();
+}
 
-	Fixed&	operator=(const Fixed& rhs);
-	
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
+Point::Point(const Point& other) {*this = other;}
 
-private:
-	static const int	s_fracBits;
-	
-	int	m_rawBits;
-};
+Point::~Point()
+{
+}
 
-#endif
+Point&	Point::operator=(const Point& rhs)
+{
+}

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.h                                            :+:      :+:    :+:   */
+/*   Point.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/04 19:28:01 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 16:09:35 by kchiang          ###   ########.fr       */
+/*   Created: 2026/05/06 16:01:56 by kchiang           #+#    #+#             */
+/*   Updated: 2026/05/06 16:07:50 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef FIXED_H
-#define FIXED_H
+#ifndef POINT_H
+#define POINT_H
 
-class Fixed
+#include "Fixed.h"
+
+class Point
 {
 public:
-	Fixed();
-	Fixed(const Fixed& other);
-	~Fixed();
+	Point();
+	Point(const float floatX, const float floatY);
+	Point(const Point& other);
+	~Point();
 
-	Fixed&	operator=(const Fixed& rhs);
-	
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
+	Point&	operator=(const Point& rhs);
 
 private:
-	static const int	s_fracBits;
-	
-	int	m_rawBits;
+	const Fixed	x;
+	const Fixed	y;
 };
 
 #endif

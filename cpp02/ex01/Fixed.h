@@ -6,9 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 19:28:01 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 01:07:07 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/06 16:09:15 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
+#ifndef FIXED_H
+#define FIXED_H
 
 #include <iostream>
 
@@ -35,3 +39,5 @@ private:
 };
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& fixed);
+
+#endif
