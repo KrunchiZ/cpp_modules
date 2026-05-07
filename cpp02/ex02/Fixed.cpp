@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 20:53:23 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 15:48:38 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/07 17:14:19 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ Fixed&	Fixed::operator=(const Fixed& rhs)
 
 bool	Fixed::operator>(const Fixed& rhs) const
 {
-	return (this->m_rawBits > rhs.m_rawBits);
+	return (m_rawBits > rhs.m_rawBits);
 }
 
 bool	Fixed::operator<(const Fixed& rhs) const
@@ -125,7 +125,7 @@ bool	Fixed::operator<=(const Fixed& rhs) const
 
 bool	Fixed::operator==(const Fixed& rhs) const
 {
-	return (this->m_rawBits == rhs.m_rawBits);
+	return (m_rawBits == rhs.m_rawBits);
 }
 
 bool	Fixed::operator!=(const Fixed& rhs) const
@@ -137,7 +137,7 @@ Fixed	Fixed::operator+(const Fixed& rhs) const
 {
 	Fixed	tmp;
 
-	tmp.m_rawBits = this->m_rawBits + rhs.m_rawBits;
+	tmp.m_rawBits = m_rawBits + rhs.m_rawBits;
 	return (tmp);
 }
 
@@ -145,7 +145,7 @@ Fixed	Fixed::operator-(const Fixed& rhs) const
 {
 	Fixed	tmp;
 
-	tmp.m_rawBits = this->m_rawBits - rhs.m_rawBits;
+	tmp.m_rawBits = m_rawBits - rhs.m_rawBits;
 	return (tmp);
 }
 
@@ -153,7 +153,7 @@ Fixed	Fixed::operator*(const Fixed& rhs) const
 {
 	Fixed	tmp;
 
-	tmp.m_rawBits = this->m_rawBits * rhs.m_rawBits >> s_fracBits;
+	tmp.m_rawBits = m_rawBits * rhs.m_rawBits >> s_fracBits;
 	return (tmp);
 }
 
@@ -161,19 +161,19 @@ Fixed	Fixed::operator/(const Fixed& rhs) const
 {
 	Fixed	tmp;
 
-	tmp.m_rawBits = (this->m_rawBits << s_fracBits) / rhs.m_rawBits;
+	tmp.m_rawBits = (m_rawBits << s_fracBits) / rhs.m_rawBits;
 	return (tmp);
 }
 
 Fixed&	Fixed::operator++()
 {
-	++this->m_rawBits;
+	++m_rawBits;
 	return (*this);
 }
 
 Fixed&	Fixed::operator--()
 {
-	--this->m_rawBits;
+	--m_rawBits;
 	return (*this);
 }
 
@@ -181,7 +181,7 @@ Fixed	Fixed::operator++(int)
 {
 	Fixed	tmp(*this);
 
-	++this->m_rawBits;
+	++m_rawBits;
 	return (tmp);
 }
 
@@ -189,7 +189,7 @@ Fixed	Fixed::operator--(int)
 {
 	Fixed	tmp(*this);
 
-	--this->m_rawBits;
+	--m_rawBits;
 	return (tmp);
 }
 

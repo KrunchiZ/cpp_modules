@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:06:58 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 18:08:59 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/07 17:12:03 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ const Fixed&	Point::getY() const {return (this->y);}
 
 std::ostream&	operator<<(std::ostream& out, const Point& point)
 {
-	out << '(' << (point.getX()).toFloat() << ", " << (point.getY()).toFloat()
+	out << '(' << point.getX().toFloat() << ", " << point.getY().toFloat()
 		<< ')';
 	return (out);
 }

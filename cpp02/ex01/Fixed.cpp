@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 20:53:23 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 02:04:23 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/07 17:14:44 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Fixed::~Fixed() {std::cout << "Destructor called\n";}
 Fixed&	Fixed::operator=(const Fixed& rhs)
 {
 	std::cout << "Copy assignment operator called\n";
-	this->m_rawBits = rhs.m_rawBits;
+	m_rawBits = rhs.m_rawBits;
 	return (*this);
 }
 
