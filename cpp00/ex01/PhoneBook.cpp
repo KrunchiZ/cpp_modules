@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/09 01:56:23 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/09 02:21:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,14 @@ void	PhoneBook::search() const
 	}
 }
 
+
+//  NOTE:***********************************************************************
+//
+// Helper functions for PhoneBook
+//
+// *****************************************************************************
 namespace
 {
-/* *****************************************************************************
- *  NOTE: Helper functions for PhoneBook::search()
- * */
-
 const string	prep_str(const string& str)
 {
 	if (str.length() <= 10)
@@ -132,10 +134,6 @@ bool	printContact(const Contact& contact, int& id)
 	}
 	return (false);
 }
-
-/* *****************************************************************************
- *  NOTE: Helper functions for PhoneBook::add()
- * */
 
 bool	enterUserInput(Contact& contact, PhoneBook::Info e_info)
 {
