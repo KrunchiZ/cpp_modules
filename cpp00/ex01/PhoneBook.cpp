@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:25:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/27 03:25:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/09 01:56:23 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@
 using std::string;
 using std::cout;
 using std::setw;
+
+namespace
+{
+	bool			enterUserInput(Contact& contact, PhoneBook::Info e_info);
+	bool			requestInput(string& field, const string& str, bool isNum);
+	bool			is_numeric(const char* str);
+	bool			printContact(const Contact& contact, int& id);
+	const string	prep_str(const string& str);
+}
 
 PhoneBook::PhoneBook()
 	: m_currentId(0)
@@ -71,7 +80,7 @@ void	PhoneBook::search() const
 			std::stringstream ss(str);
 			int id = 0;
 			ss >> id;
-			if (printContact(id))
+			if (printContact(m_contacts[id - 1], id))
 				break ;
 		}
 		cout << "\n\t* Invalid Index *\n";
@@ -79,18 +88,20 @@ void	PhoneBook::search() const
 	}
 }
 
+namespace
+{
 /* *****************************************************************************
  *  NOTE: Helper functions for PhoneBook::search()
  * */
 
-const string	PhoneBook::prep_str(const string& str) const
+const string	prep_str(const string& str)
 {
 	if (str.length() <= 10)
 		return (str);
 	return (str.substr(0, 9) + '.');
 }
 
-bool	PhoneBook::is_numeric(const char* str) const
+bool	is_numeric(const char* str)
 {
 	if (*str == '+' || *str == '-')
 		++str;
@@ -102,22 +113,21 @@ bool	PhoneBook::is_numeric(const char* str) const
 	return (true);
 }
 
-bool	PhoneBook::printContact(int& id) const
+bool	printContact(const Contact& contact, int& id)
 {
 	if (!id)
 		return (true);
 	if (id < 1 || id > 8)
 		return (false);
-	if (m_contacts[id - 1].getId())
+	if (contact.getId())
 	{
 		cout << "\n\t" << std::left << setw(20) << "First Name" << ": "
-			<< m_contacts[id - 1].getFirstName() << "\n\t" << setw(20)
-			<< "Last Name" << ": " << m_contacts[id - 1].getLastName()
-			<< "\n\t" << setw(20) << "Nickname" << ": "
-			<< m_contacts[id - 1].getNickname() << "\n\t" << setw(20)
-			<< "Phone Number" << ": " << m_contacts[id - 1].getPhoneNum()
-			<< "\n\t" << setw(20) << "Darkest Secret" << ": "
-			<< m_contacts[id - 1].getDarkSecret() << "\n\n" << std::right;
+			<< contact.getFirstName() << "\n\t" << setw(20) << "Last Name"
+			<< ": " << contact.getLastName() << "\n\t" << setw(20) << "Nickname"
+			<< ": " << contact.getNickname() << "\n\t" << setw(20)
+			<< "Phone Number" << ": " << contact.getPhoneNum() << "\n\t"
+			<< setw(20) << "Darkest Secret" << ": " << contact.getDarkSecret()
+			<< "\n\n" << std::right;
 		return (true);
 	}
 	return (false);
@@ -127,7 +137,7 @@ bool	PhoneBook::printContact(int& id) const
  *  NOTE: Helper functions for PhoneBook::add()
  * */
 
-bool	PhoneBook::enterUserInput(Contact& contact, Info e_info)
+bool	enterUserInput(Contact& contact, PhoneBook::Info e_info)
 {
 	string	buffer;
 	bool	inputRequested = true;
@@ -135,23 +145,23 @@ bool	PhoneBook::enterUserInput(Contact& contact, Info e_info)
 
 	switch (e_info)
 	{
-		case firstName:
+		case PhoneBook::firstName:
 			inputRequested = requestInput(buffer, "first name", !isNum);
 			contact.setFirstName(buffer);
 			return (inputRequested);
-		case lastName:
+		case PhoneBook::lastName:
 			inputRequested = requestInput(buffer, "last name", !isNum);
 			contact.setLastName(buffer);
 			return (inputRequested);
-		case nickname:
+		case PhoneBook::nickname:
 			inputRequested = requestInput(buffer, "nickname", !isNum);
 			contact.setNickname(buffer);
 			return (inputRequested);
-		case phoneNum:
+		case PhoneBook::phoneNum:
 			inputRequested = requestInput(buffer, "phone number", isNum);
 			contact.setPhoneNum(buffer);
 			return (inputRequested);
-		case darkSecret:
+		case PhoneBook::darkSecret:
 			inputRequested = requestInput(buffer, "darkest secret", !isNum);
 			contact.setDarkSecret(buffer);
 			return (inputRequested);
@@ -160,8 +170,7 @@ bool	PhoneBook::enterUserInput(Contact& contact, Info e_info)
 	}
 }
 
-bool	PhoneBook::requestInput(string& buffer, const string& str,
-			bool isNum) const
+bool	requestInput(string& buffer, const string& str, bool isNum)
 {
 	while (buffer.empty())
 	{
@@ -186,4 +195,5 @@ bool	PhoneBook::requestInput(string& buffer, const string& str,
 		}
 	}
 	return (true);
+}
 }
