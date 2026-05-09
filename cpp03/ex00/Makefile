@@ -3,7 +3,7 @@ CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 NAME		= ex00
 SRC			= main.cpp	\
-			  bsp.cpp
+			  ClapTrap.cpp
 
 OBJS_DIR	= build/
 
