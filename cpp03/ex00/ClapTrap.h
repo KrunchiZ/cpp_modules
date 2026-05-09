@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/10 01:48:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/10 01:52:00 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class ClapTrap
 {
 public:
-	ClapTrap(const std::string& name = "Foo");
+	ClapTrap(const std::string& name = "Default");
 	ClapTrap(const ClapTrap& other);
 	~ClapTrap();
 
