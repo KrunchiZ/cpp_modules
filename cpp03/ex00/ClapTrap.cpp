@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/10 01:31:10 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/10 01:37:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	ClapTrap::attack(const string& target)
 			takeDamage(m_attackDamage);
 	}
 	else
-		cout << "ClapTrap " << m_name << " ran out of energy points!\n";
+		cout << "ClapTrap " << m_name
+			<< " ran out of energy points! Attack failed!\n";
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -72,5 +73,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		m_hitPoints += amount;
 	}
 	else
-		cout << "ClapTrap " << m_name << " ran out of energy points!\n";
+		cout << "ClapTrap " << m_name
+			<< " ran out of energy points! Repair failed!\n";
 }
