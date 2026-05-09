@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/10 01:25:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/10 01:31:10 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ ClapTrap::ClapTrap(const std::string& name)
 	, m_energyPoints(10)
 	, m_attackDamage(0)
 {
-	cout << "ClapTrap " << m_name << " has spawned.\n";
+	cout << "ClapTrap " << m_name << " has spawned with " << m_hitPoints
+		<< " hit points, " << m_energyPoints << " energy points and "
+		<< m_attackDamage << " attack damage!\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) {*this = other;}
 
-ClapTrap::~ClapTrap() {cout << "ClapTrap " << m_name << " has despawned.\n";}
+ClapTrap::~ClapTrap() {cout << "ClapTrap " << m_name << " has despawned!\n";}
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& rhs)
 {
