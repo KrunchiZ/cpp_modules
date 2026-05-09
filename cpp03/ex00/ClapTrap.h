@@ -6,9 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/10 01:22:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/10 01:48:17 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
+#ifndef CLAPTRAP_H
+#define CLAPTRAP_H
 
 #include <string>
 
@@ -31,3 +35,5 @@ private:
 	unsigned int	m_energyPoints;
 	unsigned int	m_attackDamage;
 };
+
+#endif
