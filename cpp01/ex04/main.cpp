@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 18:23:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/13 18:35:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/13 18:37:53 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool	argsIsInvalid(int& argc, char** argv)
 		std::cerr << "Error: ex04 <infile> <old string> <new string>\n";
 		return (true);
 	}
-	if (string(argv[1]).empty())
+	if (!*argv[1])
 	{
 		std::cerr << "Error: <infile> cannot be empty\n";
 		return (true);
