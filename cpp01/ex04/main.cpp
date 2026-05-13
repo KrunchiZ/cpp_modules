@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 18:23:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/13 18:37:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/13 18:49:22 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,9 @@ void	parseLine(ifstream& inFile, ofstream& outFile,
 			outFile << '\n';
 		line.clear();
 	}
+	if (inFile.fail())
+		std::cerr << "Error: I/O error while reading\n";
+	else if (outFile.fail())
+		std::cerr << "Error: I/O error while writing\n";
 }
 }
