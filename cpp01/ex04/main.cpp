@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 18:23:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/04/28 00:27:29 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/05/13 18:35:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ using std::string;
 
 namespace
 {
-bool	argsIsInvalid(int& argc, char* file);
+bool	argsIsInvalid(int& argc, char** argv);
 void	parseLine(ifstream& inFile, ofstream& outFile,
 			const string& s1, const string& s2);
 }
 
 int	main(int argc, char **argv)
 {
-	if (argsIsInvalid(argc, argv[1]))
+	if (argsIsInvalid(argc, argv))
 		return (1);
 
 	ifstream	inFile(argv[1]);
@@ -50,16 +50,21 @@ int	main(int argc, char **argv)
 
 namespace
 {
-bool	argsIsInvalid(int& argc, char* file)
+bool	argsIsInvalid(int& argc, char** argv)
 {
 	if (argc != 4)
 	{
 		std::cerr << "Error: ex04 <infile> <old string> <new string>\n";
 		return (true);
 	}
-	if (string(file).empty())
+	if (string(argv[1]).empty())
 	{
-		std::cerr << "Error: <infile> cannot be empty string\n";
+		std::cerr << "Error: <infile> cannot be empty\n";
+		return (true);
+	}
+	if (!*argv[2])
+	{
+		std::cerr << "Error: needle string cannot be empty\n";
 		return (true);
 	}
 	return (false);
