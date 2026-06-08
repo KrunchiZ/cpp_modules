@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:01:56 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/06 18:06:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/06 01:35:46 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ public:
 	Point(const Point& other);
 	~Point();
 
-	Point&	operator=(const Point&);
-
 	const Fixed&	getX() const;
 	const Fixed&	getY() const;
 
 private:
 	const Fixed	x;
 	const Fixed	y;
+
+	Point&	operator=(const Point&);
 };
 
 std::ostream&	operator<<(std::ostream& out, const Point& point);
