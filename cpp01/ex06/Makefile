@@ -22,22 +22,22 @@ all: $(NAME)
 
 $(NAME): $(OBJS_DIR) $(BUILD_OBJS)
 	$(CPP) $(CPPFLAGS) $(BUILD_OBJS) -o $(NAME)
-	echo "Making $(GREEN)$(NAME)$(WHITE)..."
+	printf "Making $(GREEN)$(NAME)$(WHITE)..."
 
 $(OBJS_DIR):
 	mkdir $(OBJS_DIR)
 
 $(OBJS_DIR)%.o: %.cpp
 	$(CPP) $(CPPFLAGS) -c $< -o $@
-	echo "Compiling $(CYAN)$@$(WHITE)..."
+	printf "Compiling $(CYAN)$@$(WHITE)..."
 
 fclean: clean
 	rm -f $(NAME)
-	echo "Removing $(GREEN)$(NAME)$(WHITE)"
+	printf "Removing $(GREEN)$(NAME)$(WHITE)"
 
 clean:
 	rm -rf $(OBJS_DIR)
-	echo "Removing $(CYAN)object$(WHITE) files..."
+	printf "Removing $(CYAN)object$(WHITE) files..."
 
 re: fclean all
 
