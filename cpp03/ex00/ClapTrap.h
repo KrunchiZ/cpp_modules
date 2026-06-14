@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 13:24:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 13:26:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ public:
 
 private:
 	std::string		m_name;
-	const unsigned int	m_hitPoints;
-	const unsigned int	m_energyPoints;
-	const unsigned int	m_attackDamage;
+	unsigned int	m_hitPoints;
+	unsigned int	m_energyPoints;
+	unsigned int	m_attackDamage;
 };
 
 #endif
