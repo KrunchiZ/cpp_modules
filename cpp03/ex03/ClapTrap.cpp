@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 16:47:07 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 19:53:03 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ void	ClapTrap::setName(const string& newName)
 {
 	m_name = newName;
 }
-
-void	ClapTrap::setHitPoints(const unsigned int& hp) {m_hitPoints = hp;}
-void	ClapTrap::setEnergyPoints(const unsigned int& ep) {m_energyPoints = ep;}
-void	ClapTrap::setAttackDamage(const unsigned int& atkDmg) {m_attackDamage = atkDmg;}
 
 void	ClapTrap::attack(const string& target)
 {
