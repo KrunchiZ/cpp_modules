@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 17:01:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 20:13:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ class FragTrap : public ClapTrap
 public:
 	FragTrap(const std::string& name = "Default");
 	FragTrap(const FragTrap& other);
-	~FragTrap();
+	virtual ~FragTrap();
 
 	FragTrap&	operator=(const FragTrap& other);
 
-	void	attack(const std::string& target = "air");
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
-	void	highFivesGuys();
+	virtual void	attack(const std::string& target = "air");
+	virtual void	takeDamage(unsigned int amount);
+	virtual void	beRepaired(unsigned int amount);
+	void			highFivesGuys();
 };
 
 std::ostream&	operator<<(std::ostream& out, const FragTrap& rhs);
