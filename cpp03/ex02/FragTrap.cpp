@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 17:05:32 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 20:16:44 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ FragTrap&	FragTrap::operator=(const FragTrap& other)
 
 void	FragTrap::attack(const string& target)
 {
-	if (getEnergyPoints())
+	if (m_energyPoints)
 	{
 		cout << "FragTrap " << m_name<< " attacks " << target
 			<< ", causing " << m_attackDamage << " points of damage!\n";
