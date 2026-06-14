@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 15:19:54 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 16:59:26 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
 	ScavTrap(const ScavTrap& other);
 	~ScavTrap();
 
-	ScavTrap&	operator=(const ScavTrap& rhs);
+	ScavTrap&	operator=(const ScavTrap& other);
 	bool	getGateKeeperMode() const;
 
 	void	attack(const std::string& target = "air");
