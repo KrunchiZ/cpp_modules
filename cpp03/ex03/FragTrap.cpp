@@ -6,12 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 20:16:26 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 23:04:00 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.h"
-#include "FragTrap.h"
+#include "ClapTrap.h"
 #include <string>
 #include <iostream>
 
@@ -33,12 +33,7 @@ FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other) {*this = other;}
 
 FragTrap::~FragTrap() {cout << "FragTrap " << m_name<< " has despawned!\n";}
 
-FragTrap&	FragTrap::operator=(const FragTrap& other)
-{
-	if (this != &other)
-		ClapTrap::operator=(other);
-	return (*this);
-}
+FragTrap&	FragTrap::operator=(const FragTrap&) {return (*this);}
 
 void	FragTrap::attack(const string& target)
 {

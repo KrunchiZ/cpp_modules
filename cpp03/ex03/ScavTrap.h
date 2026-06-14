@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 19:58:36 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 22:47:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "ClapTrap.h"
 #include <string>
 
-class ScavTrap : public ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 public:
 	ScavTrap(const std::string& name = "Default");
@@ -32,7 +32,7 @@ public:
 	virtual void	beRepaired(unsigned int amount);
 	void			guardGate();
 
-private:
+protected:
 	bool	m_gateKeeperMode;
 };
 

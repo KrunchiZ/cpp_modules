@@ -6,12 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 19:56:11 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 22:40:24 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.h"
-#include "ScavTrap.h"
+#include "ClapTrap.h"
 #include <string>
 #include <iostream>
 
@@ -39,10 +39,7 @@ ScavTrap::~ScavTrap() {cout << "ScavTrap " << m_name<< " has despawned!\n";}
 ScavTrap&	ScavTrap::operator=(const ScavTrap& other)
 {
 	if (this != &other)
-	{
-		ClapTrap::operator=(other);
 		m_gateKeeperMode = other.m_gateKeeperMode;
-	}
 	return (*this);
 }
 

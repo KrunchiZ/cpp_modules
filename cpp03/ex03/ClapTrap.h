@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 19:52:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 23:58:03 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ public:
 
 	ClapTrap&	operator=(const ClapTrap& other);
 
-	const std::string&	getName() const;
 	const unsigned int&	getHitPoints() const;
 	const unsigned int&	getEnergyPoints() const;
 	const unsigned int&	getAttackDamage() const;
 
-	void	setName(const std::string& newName);
+	virtual const std::string&	getName() const;
+
+	virtual void	setName(const std::string& newName);
 
 	virtual void	attack(const std::string& target = "air");
 	virtual void	takeDamage(unsigned int amount);
