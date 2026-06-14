@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 14:51:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 16:14:02 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	{
 		cout << "ClapTrap " << m_name << " has taken " << amount
 			<< " points of damage!\n";
-		m_hitPoints -= amount;
+		if (m_hitPoints >= amount)
+			m_hitPoints -= amount;
+		else
+			m_hitPoints = 0;
 	}
 }
 
