@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/05/10 01:37:45 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 13:21:54 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ ClapTrap::~ClapTrap() {cout << "ClapTrap " << m_name << " has despawned!\n";}
 ClapTrap&	ClapTrap::operator=(const ClapTrap& rhs)
 {
 	m_name = rhs.m_name;
-	m_hitPoints = rhs.m_hitPoints;
-	m_energyPoints = rhs.m_energyPoints;
-	m_attackDamage = rhs.m_attackDamage;
 	return (*this);
 }
 
@@ -48,7 +45,7 @@ void	ClapTrap::attack(const string& target)
 		cout << "ClapTrap " << m_name << " attacks " << target << ", causing "
 			<< m_attackDamage << " points of damage!\n";
 		--m_energyPoints;
-		if (target == "itself" || target == m_name)
+		if (target == m_name)
 			takeDamage(m_attackDamage);
 	}
 	else
@@ -58,9 +55,12 @@ void	ClapTrap::attack(const string& target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	cout << "ClapTrap " << m_name << " has taken " << amount
-		<< " points of damage!\n";
-	m_hitPoints -= amount;
+	if (amount)
+	{
+		cout << "ClapTrap " << m_name << " has taken " << amount
+			<< " points of damage!\n";
+		m_hitPoints -= amount;
+	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
