@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 16:14:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 16:28:23 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& rhs)
 	{
 		m_name = rhs.m_name;
 		m_hitPoints = rhs.m_hitPoints;
-		m_hitPoints = rhs.m_energyPoints;
-		m_hitPoints = rhs.m_attackDamage;
+		m_energyPoints = rhs.m_energyPoints;
+		m_attackDamage = rhs.m_attackDamage;
 	}
 	return (*this);
 }

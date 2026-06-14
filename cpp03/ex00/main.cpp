@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 01:26:27 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 14:52:34 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 16:42:11 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,22 @@ int	main(void)
 
 	for (int i = 0; i < 7; ++i)
 		foo.attack();
-	std::cout << "\n" << foo;
+	std::cout << foo;
+
+	std::cout << "\nbar(foo), then setName(\"Bar\")\n\n";
+	ClapTrap	bar(foo);
+	bar.setName("Bar");
+
+	std::cout << "foo attack again\n";
+	foo.attack();
+	foo.attack();
 	foo.beRepaired(1);
-	foo.attack("Foo");
-	foo.attack("Foo");
-	std::cout << "\n" << foo;
+	std::cout << foo;
 	foo.beRepaired(1);
 	foo.attack();
+
+	std::cout << "\n" << bar;
+	bar.attack();
+	std::cout << bar;
 	return (0);
 }
