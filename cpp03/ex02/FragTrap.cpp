@@ -6,12 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 20:16:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 22:39:45 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.h"
-#include "FragTrap.h"
+#include "ClapTrap.h"
 #include <string>
 #include <iostream>
 
