@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 16:47:51 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 19:53:46 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ public:
 	const unsigned int&	getAttackDamage() const;
 
 	void	setName(const std::string& newName);
-	void	setHitPoints(const unsigned int& hp);
-	void	setEnergyPoints(const unsigned int& ep);
-	void	setAttackDamage(const unsigned int& atkDmg);
 
 	void	attack(const std::string& target = "air");
 	void	takeDamage(unsigned int amount);
