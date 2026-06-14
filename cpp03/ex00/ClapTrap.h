@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 14:37:22 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 16:47:51 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 	ClapTrap(const ClapTrap& other);
 	~ClapTrap();
 
-	ClapTrap&	operator=(const ClapTrap& rhs);
+	ClapTrap&	operator=(const ClapTrap& other);
 
 	const std::string&	getName() const;
 	const unsigned int&	getHitPoints() const;
