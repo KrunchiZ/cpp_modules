@@ -1,9 +1,9 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-NAME		= ex00
+NAME		= ex01
 SRC			= main.cpp	\
-			  ClapTrap.cpp
+			  ClapTrap.cpp	ScavTrap.cpp
 
 OBJS_DIR	= build/
 
