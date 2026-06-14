@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 16:59:26 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 19:58:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ class ScavTrap : public ClapTrap
 public:
 	ScavTrap(const std::string& name = "Default");
 	ScavTrap(const ScavTrap& other);
-	~ScavTrap();
+	virtual ~ScavTrap();
 
 	ScavTrap&	operator=(const ScavTrap& other);
-	bool	getGateKeeperMode() const;
+	bool		getGateKeeperMode() const;
 
-	void	attack(const std::string& target = "air");
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
-	void	guardGate();
+	virtual void	attack(const std::string& target = "air");
+	virtual void	takeDamage(unsigned int amount);
+	virtual void	beRepaired(unsigned int amount);
+	void			guardGate();
 
 private:
 	bool	m_gateKeeperMode;

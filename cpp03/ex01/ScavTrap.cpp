@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 16:46:43 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 19:56:11 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& other)
 
 void	ScavTrap::attack(const string& target)
 {
-	if (getEnergyPoints())
+	if (m_energyPoints)
 	{
 		cout << "ScavTrap " << m_name<< " attacks " << target
 			<< ", causing " << m_attackDamage << " points of damage!\n";
