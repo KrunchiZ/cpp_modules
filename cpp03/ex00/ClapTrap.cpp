@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 13:27:13 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/14 14:51:17 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,29 @@ ClapTrap::~ClapTrap() {cout << "ClapTrap " << m_name << " has despawned!\n";}
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& rhs)
 {
-	m_name = rhs.m_name;
-	m_hitPoints = rhs.m_hitPoints;
-	m_energyPoints = rhs.m_energyPoints;
-	m_attackDamage = rhs.m_attackDamage;
+	if (this != &rhs)
+	{
+		m_name = rhs.m_name;
+		m_hitPoints = rhs.m_hitPoints;
+		m_hitPoints = rhs.m_energyPoints;
+		m_hitPoints = rhs.m_attackDamage;
+	}
 	return (*this);
 }
+
+const string&	ClapTrap::getName() const {return (m_name);}
+const unsigned int&	ClapTrap::getHitPoints() const {return (m_hitPoints);}
+const unsigned int&	ClapTrap::getEnergyPoints() const {return (m_energyPoints);}
+const unsigned int&	ClapTrap::getAttackDamage() const {return (m_attackDamage);}
+
+void	ClapTrap::setName(const string& newName)
+{
+	m_name = newName;
+}
+
+void	ClapTrap::setHitPoints(const unsigned int& hp) {m_hitPoints = hp;}
+void	ClapTrap::setEnergyPoints(const unsigned int& ep) {m_energyPoints = ep;}
+void	ClapTrap::setAttackDamage(const unsigned int& atkDmg) {m_attackDamage = atkDmg;}
 
 void	ClapTrap::attack(const string& target)
 {
@@ -78,4 +95,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	else
 		cout << "ClapTrap " << m_name
 			<< " ran out of energy points! Repair failed!\n";
+}
+
+std::ostream&	operator<<(std::ostream& out, const ClapTrap& rhs)
+{
+	out << "ClapTrap " << rhs.getName() << ": " << rhs.getHitPoints()
+		<< " hit points, " << rhs.getEnergyPoints() << " energy points and "
+		<< rhs.getAttackDamage() << " attack damage\n";
+	return (out);
 }
