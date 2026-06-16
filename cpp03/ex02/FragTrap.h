@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 20:13:36 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/16 17:18:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ public:
 
 	FragTrap&	operator=(const FragTrap& other);
 
-	virtual void	attack(const std::string& target = "air");
-	virtual void	takeDamage(unsigned int amount);
-	virtual void	beRepaired(unsigned int amount);
 	void			highFivesGuys();
 };
 
