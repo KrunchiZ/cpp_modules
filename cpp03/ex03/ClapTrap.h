@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 23:58:03 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/16 17:27:03 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ public:
 	virtual void	setName(const std::string& newName);
 
 	virtual void	attack(const std::string& target = "air");
-	virtual void	takeDamage(unsigned int amount);
-	virtual void	beRepaired(unsigned int amount);
+	void	takeDamage(unsigned int amount);
+	void	beRepaired(unsigned int amount);
 
 protected:
 	std::string		m_name;

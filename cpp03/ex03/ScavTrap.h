@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/14 22:47:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/16 17:29:38 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ public:
 	bool		getGateKeeperMode() const;
 
 	virtual void	attack(const std::string& target = "air");
-	virtual void	takeDamage(unsigned int amount);
-	virtual void	beRepaired(unsigned int amount);
+
 	void			guardGate();
 
 protected:

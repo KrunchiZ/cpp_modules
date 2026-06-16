@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:30:02 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/15 00:02:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/06/16 17:28:06 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,38 +68,6 @@ void	DiamondTrap::setName(const string& newName)
 {
 	m_name = newName;
 	ClapTrap::m_name = newName + "_clap_name";
-}
-
-void	DiamondTrap::attack(const string& target)
-{
-	ScavTrap::attack(target);
-}
-
-void	DiamondTrap::takeDamage(unsigned int amount)
-{
-	if (amount)
-	{
-		cout << "DiamondTrap " << m_name<< " has taken " << amount
-			<< " points of damage!\n";
-		if (m_hitPoints >= amount)
-			m_hitPoints -= amount;
-		else
-			m_hitPoints = 0;
-	}
-}
-
-void	DiamondTrap::beRepaired(unsigned int amount)
-{
-	if (m_energyPoints)
-	{
-		cout << "DiamondTrap " << m_name<< " repairs itself and regains "
-			<< amount << " hit points!\n";
-		--m_energyPoints;
-		m_hitPoints += amount;
-	}
-	else
-		cout << "DiamondTrap " << m_name
-			<< " ran out of energy points! Repair failed!\n";
 }
 
 void	DiamondTrap::whoAmI()
