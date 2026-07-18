@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:53:05 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 17:00:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.h"
-#include <string>
+#include "WrongAnimal.h"
+#include "WrongCat.h"
 #include <iostream>
+#include <string>
 
-Animal::Animal(): type("Base")
+WrongCat::WrongCat(): WrongAnimal()
 {
+	type = "WrongCat";
 	std::cout << "Animal of type " << type << " has spawned.\n";
 }
 
-Animal::Animal(const Animal& other) {*this = other;}
+WrongCat::WrongCat(const WrongCat& other) {*this = other;}
 
-Animal::~Animal()
+WrongCat::~WrongCat()
 {
 	std::cout << "Animal of type " << type << " has been destroyed.\n";
 }
 
-Animal&	Animal::operator=(const Animal& rhs)
+WrongCat& WrongCat::operator=(const WrongCat& rhs)
 {
 	if (this != &rhs)
+	{
+		WrongAnimal::operator=(rhs);
 		type = rhs.type;
+	}
 	return (*this);
 }
 
-const std::string&	Animal::getType() const {return (type);}
+const std::string&	WrongCat::getType() const {return (type);}
 
-void	Animal::makeSound() const
+void	WrongCat::makeSound() const
 {
-	std::cout << "Some generic animal sound!\n";
+	std::cout << "Meow!\n";
 }
