@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:08:07 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 16:14:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@
 class Animal {
 
 public:
-	virtual ~Animal();
+	Animal();
 	Animal(const Animal &other);
+	virtual ~Animal();
 	Animal& operator=(const Animal &rhs);
-	
+
 	virtual void makeSound() const;
 
 protected:
-	std::string m_type;
-	
-	Animal();
+	std::string type;
 };
 
 #endif

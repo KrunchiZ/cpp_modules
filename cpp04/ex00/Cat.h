@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:12:36 by kchiang          ###   ########.fr       */
+/*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
+/*   Updated: 2026/07/18 16:09:46 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CAT_H
+#define CAT_H
 #include "Animal.h"
 
-Animal::Animal(): type("Base") {}
+class Cat : public Animal {
 
-Animal::Animal(const Animal& other) {*this = other;}
+public:
+	Cat();
+	Cat(const Cat &other);
+	Cat& operator=(const Cat &rhs);
+	virtual ~Cat();
 
-Animal::~Animal() {}
+	virtual void makeSound() const;
+};
 
-Animal&	Animal::operator=(const Animal& rhs)
-{
-	if (this != &rhs)
-		type = rhs.type;
-	return (*this);
-}
-
-void	Animal::makeSound() const {}
+#endif
