@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 17:00:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 18:24:21 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ WrongCat::WrongCat(): WrongAnimal()
 	std::cout << "Animal of type " << type << " has spawned.\n";
 }
 
-WrongCat::WrongCat(const WrongCat& other) {*this = other;}
+WrongCat::WrongCat(const WrongCat& other)
+{
+	std::cout << "Copying Animal of type " << other.type << ".\n";
+	*this = other;
+}
 
 WrongCat::~WrongCat()
 {

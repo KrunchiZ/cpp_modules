@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:48:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 18:23:52 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ Cat::Cat(): Animal()
 	std::cout << "Animal of type " << type << " has spawned.\n";
 }
 
-Cat::Cat(const Cat& other) {*this = other;}
+Cat::Cat(const Cat& other)
+{
+	std::cout << "Copying Animal of type " << other.type << ".\n";
+	*this = other;
+}
 
 Cat::~Cat()
 {
