@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.h                                              :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:48:10 by kchiang          ###   ########.fr       */
+/*   Created: 2026/07/18 16:45:09 by kchiang           #+#    #+#             */
+/*   Updated: 2026/07/18 16:49:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_H
-#define CAT_H
 #include "Animal.h"
-#include <string>
+#include "Dog.h"
+#include "Cat.h"
+#include <iostream>
 
-class Cat : public Animal {
-
-public:
-	Cat();
-	Cat(const Cat &other);
-	Cat& operator=(const Cat &rhs);
-	virtual ~Cat();
-
-	virtual void makeSound() const;
-	virtual const std::string& getType() const;
-};
-
-#endif
+int main()
+{
+    const Animal* meta = new Animal();
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    std::cout << j->getType() << " " << std::endl;
+    std::cout << i->getType() << " " << std::endl;
+    i->makeSound();
+    j->makeSound();
+    meta->makeSound();
+    return 0;
+}

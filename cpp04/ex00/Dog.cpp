@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:48:26 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 16:49:11 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.h"
-#include <string>
+#include "Dog.h"
 #include <iostream>
 
-Animal::Animal(): type("Base")
+Dog::Dog(): Animal()
 {
+	type = "Dog";
 	std::cout << "Animal of type " << type << " has spawned.\n";
 }
 
-Animal::Animal(const Animal& other) {*this = other;}
+Dog::Dog(const Dog& other) {*this = other;}
 
-Animal::~Animal()
+Dog::~Dog()
 {
 	std::cout << "Animal of type " << type << " has been destroyed.\n";
 }
 
-Animal&	Animal::operator=(const Animal& rhs)
+Dog& Dog::operator=(const Dog& rhs)
 {
 	if (this != &rhs)
+	{
+		Animal::operator=(rhs);
 		type = rhs.type;
+	}
 	return (*this);
 }
 
-const std::string&	Animal::getType() const {return (type);}
+const std::string&	Dog::getType() const {return (type);}
 
-void	Animal::makeSound() const {}
+void	Dog::makeSound() const
+{
+	std::cout << "Woof!\n";
+}

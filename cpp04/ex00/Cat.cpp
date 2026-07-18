@@ -6,13 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:42:11 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 16:48:17 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.h"
 #include "Cat.h"
 #include <iostream>
+#include <string>
 
 Cat::Cat(): Animal()
 {
@@ -36,6 +37,8 @@ Cat& Cat::operator=(const Cat& rhs)
 	}
 	return (*this);
 }
+
+const std::string&	Cat::getType() const {return (type);}
 
 void	Cat::makeSound() const
 {
