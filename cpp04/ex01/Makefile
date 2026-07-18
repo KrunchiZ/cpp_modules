@@ -1,11 +1,10 @@
 CPP			= c++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -O0 -g3
 
 NAME		= ex01
 SRC			= main.cpp		\
 			  Animal.cpp		Brain.cpp		\
-			  Dog.cpp			Cat.cpp			\
-			  WrongAnimal.cpp	WrongCat.cpp
+			  Dog.cpp			Cat.cpp
 
 OBJS_DIR	= build/
 

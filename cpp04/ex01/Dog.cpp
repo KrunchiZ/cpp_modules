@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 17:34:21 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 18:25:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ Dog::Dog()
 	std::cout << "Animal of type " << type << " has spawned.\n";
 }
 
-Dog::Dog(const Dog& other) {*this = other;}
+Dog::Dog(const Dog& other): brain(new Brain())
+{
+	std::cout << "Copying Animal of type " << other.type << ".\n";
+	*this = other;
+}
 
 Dog::~Dog()
 {
@@ -38,7 +42,8 @@ Dog& Dog::operator=(const Dog& rhs)
 	{
 		Animal::operator=(rhs);
 		type = rhs.type;
-		delete brain;
+		if (brain)
+			delete brain;
 		brain = new Brain(*rhs.brain);
 	}
 	return (*this);

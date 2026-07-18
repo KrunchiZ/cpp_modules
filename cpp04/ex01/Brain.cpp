@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 17:19:59 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 17:25:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 18:24:43 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ Brain::Brain()
     std::cout << "Brain has been created.\n";
 }
 
-Brain::Brain(const Brain& other) {*this = other;}
+Brain::Brain(const Brain& other)
+{
+	std::cout << "Copying Brain.\n";
+	*this = other;
+}
 
 Brain::~Brain()
 {
