@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:48:36 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 17:27:02 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #define ANIMAL_H
 #include <string>
 
-class Animal {
-
+class Animal
+{
 public:
 	Animal();
 	Animal(const Animal &other);

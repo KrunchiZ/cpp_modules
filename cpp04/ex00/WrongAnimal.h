@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:55:06 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 17:27:19 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #define WRONGANIMAL_H
 #include <string>
 
-class WrongAnimal {
-
+class WrongAnimal
+{
 public:
 	WrongAnimal();
 	WrongAnimal(const WrongAnimal &other);

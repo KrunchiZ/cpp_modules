@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:49:01 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 17:27:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #define DOG_H
 #include "Animal.h"
 
-class Dog : public Animal {
-
+class Dog : public Animal
+{
 public:
 	Dog();
 	Dog(const Dog &other);
