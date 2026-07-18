@@ -6,13 +6,14 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:49:11 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 17:31:09 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.h"
 #include "Dog.h"
 #include <iostream>
+#include <string>
 
 Dog::Dog(): Animal()
 {
