@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.h                                           :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 17:28:22 by kchiang          ###   ########.fr       */
+/*   Created: 2026/07/18 17:19:59 by kchiang           #+#    #+#             */
+/*   Updated: 2026/07/18 17:25:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_H
-#define ANIMAL_H
-#include <string>
+#include "Brain.h"
+#include <iostream>
 
-class Animal
+Brain::Brain()
 {
-public:
-	Animal();
-	Animal(const Animal &other);
-	virtual ~Animal();
-	Animal& operator=(const Animal &rhs);
+    std::cout << "Brain has been created.\n";
+}
 
-	virtual void makeSound() const;
-	virtual const std::string& getType() const;
+Brain::Brain(const Brain& other) {*this = other;}
 
-protected:
-	std::string type;
-};
+Brain::~Brain()
+{
+    std::cout << "Brain has been destroyed.\n";
+}
 
-#endif
+Brain& Brain::operator=(const Brain& rhs)
+{
+    if (this != &rhs)
+    {
+        for (int i = 0; i < 100; ++i)
+            ideas[i] = rhs.ideas[i];
+    }
+    return (*this);
+}

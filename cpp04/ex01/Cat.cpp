@@ -6,16 +6,19 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 16:48:17 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 17:35:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.h"
 #include "Cat.h"
+#include "Brain.h"
 #include <iostream>
 #include <string>
 
-Cat::Cat(): Animal()
+Cat::Cat()
+	: Animal()
+	, brain(new Brain())
 {
 	type = "Cat";
 	std::cout << "Animal of type " << type << " has spawned.\n";
@@ -25,6 +28,7 @@ Cat::Cat(const Cat& other) {*this = other;}
 
 Cat::~Cat()
 {
+	delete brain;
 	std::cout << "Animal of type " << type << " has been destroyed.\n";
 }
 
@@ -34,6 +38,8 @@ Cat& Cat::operator=(const Cat& rhs)
 	{
 		Animal::operator=(rhs);
 		type = rhs.type;
+		delete brain;
+		brain = new Brain(*rhs.brain);
 	}
 	return (*this);
 }

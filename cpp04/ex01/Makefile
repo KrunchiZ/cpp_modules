@@ -3,7 +3,7 @@ CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 NAME		= ex01
 SRC			= main.cpp		\
-			  Animal.cpp	\
+			  Animal.cpp		Brain.cpp		\
 			  Dog.cpp			Cat.cpp			\
 			  WrongAnimal.cpp	WrongCat.cpp
 

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.h                                           :+:      :+:    :+:   */
+/*   Brain.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 17:28:22 by kchiang          ###   ########.fr       */
+/*   Created: 2026/07/18 17:17:36 by kchiang           #+#    #+#             */
+/*   Updated: 2026/07/18 17:19:26 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_H
-#define ANIMAL_H
+#ifndef BRAIN_H
+#define BRAIN_H
 #include <string>
 
-class Animal
+class Brain
 {
 public:
-	Animal();
-	Animal(const Animal &other);
-	virtual ~Animal();
-	Animal& operator=(const Animal &rhs);
+    Brain();
+    Brain(const Brain& other);
+    ~Brain();
 
-	virtual void makeSound() const;
-	virtual const std::string& getType() const;
+    Brain&	operator=(const Brain& rhs);
 
-protected:
-	std::string type;
+private:
+    std::string ideas[100];
 };
 
 #endif
