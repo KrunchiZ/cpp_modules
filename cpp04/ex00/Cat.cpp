@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 18:23:52 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 21:05:40 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ Cat::~Cat()
 Cat& Cat::operator=(const Cat& rhs)
 {
 	if (this != &rhs)
-	{
 		Animal::operator=(rhs);
-		type = rhs.type;
-	}
 	return (*this);
 }
 

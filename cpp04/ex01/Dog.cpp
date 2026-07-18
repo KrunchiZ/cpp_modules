@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:57:45 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 18:25:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 21:06:47 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ Dog& Dog::operator=(const Dog& rhs)
 	if (this != &rhs)
 	{
 		Animal::operator=(rhs);
-		type = rhs.type;
 		if (brain)
 			delete brain;
 		brain = new Brain(*rhs.brain);
