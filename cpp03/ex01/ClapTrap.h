@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/16 17:04:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 15:53:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #define CLAPTRAP_H
 
 #include <string>
+#include <iostream>
 
 class ClapTrap
 {

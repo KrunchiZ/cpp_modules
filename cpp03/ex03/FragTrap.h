@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/16 17:28:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 15:54:20 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 #include "ClapTrap.h"
 #include <string>
+#include <iostream>
 
 class FragTrap : virtual public ClapTrap
 {

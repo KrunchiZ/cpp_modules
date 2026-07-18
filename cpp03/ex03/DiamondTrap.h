@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 00:26:14 by kchiang           #+#    #+#             */
-/*   Updated: 2026/06/16 17:27:21 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 15:54:15 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "ScavTrap.h"
 #include "FragTrap.h"
 #include <string>
+#include <iostream>
 
 class DiamondTrap : public ScavTrap, public FragTrap
 {
