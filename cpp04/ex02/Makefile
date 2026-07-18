@@ -1,7 +1,7 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -O0 -g3
 
-NAME		= ex01
+NAME		= ex02
 SRC			= main.cpp		\
 			  Animal.cpp		Brain.cpp		\
 			  Dog.cpp			Cat.cpp

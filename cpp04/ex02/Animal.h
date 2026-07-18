@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 18:38:47 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 19:08:37 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	virtual ~Animal();
 	Animal& operator=(const Animal &rhs);
 
-	virtual void makeSound() const;
+	virtual void makeSound() const = 0;
 	virtual const std::string& getType() const;
 
 protected:

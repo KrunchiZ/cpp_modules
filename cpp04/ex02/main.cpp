@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 16:45:09 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 18:37:20 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 20:30:14 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 int main()
 {
+	/* Uncommetting line below will cause compilation error
+	*  because Animal is an abstract class
+	*/
+	// Animal test = Animal();
 	{
 		std::cout <<"=== Test 1 ===\n";
 		const Animal*	j = new Dog();
