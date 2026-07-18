@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/18 20:44:09 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 22:21:15 by kchiang          ###   ########.fr       */
+/*   Created: 2026/07/18 20:40:29 by kchiang           #+#    #+#             */
+/*   Updated: 2026/07/18 22:03:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ICE_H
+#define ICE_H
+
 #include "AMateria.h"
+#include "ICharacter.h"
+#include <string>
 
-AMateria::AMateria() {}
-
-AMateria::AMateria(const std::string& type) : type(type) {}
-
-AMateria::AMateria(const AMateria& other) : type(other.type) {}
-
-AMateria::~AMateria() {}
-
-AMateria&	AMateria::operator=(const AMateria& rhs)
+class Ice : public AMateria
 {
-	if (this != &rhs)
-		type = rhs.type;
-	return (*this);
-}
+public:
+	Ice();
+	Ice(const Ice& other);
+	Ice& operator=(const Ice& rhs);
+	virtual ~Ice();
+	
+	const std::string& getType() const;
+	
+	virtual Ice* clone() const;
+	virtual void use(ICharacter& target);
+};
 
-const std::string&	AMateria::getType() const {return (type);}
+#endif

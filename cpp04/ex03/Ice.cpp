@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 20:44:09 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 22:21:15 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/18 22:22:27 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.h"
+#include "Ice.h"
 
-AMateria::AMateria() {}
+Ice::Ice() : AMateria("ice") {}
 
-AMateria::AMateria(const std::string& type) : type(type) {}
+Ice::Ice(const Ice& other): AMateria("ice") {}
 
-AMateria::AMateria(const AMateria& other) : type(other.type) {}
+Ice::~Ice() {}
 
-AMateria::~AMateria() {}
+Ice&	Ice::operator=(const Ice& rhs) {return (*this);}
 
-AMateria&	AMateria::operator=(const AMateria& rhs)
-{
-	if (this != &rhs)
-		type = rhs.type;
-	return (*this);
-}
-
-const std::string&	AMateria::getType() const {return (type);}
+Ice*	Ice::clone() const {return (new Ice(*this));}
