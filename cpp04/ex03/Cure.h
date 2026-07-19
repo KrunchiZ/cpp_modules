@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/18 20:44:09 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/19 17:49:41 by kchiang          ###   ########.fr       */
+/*   Created: 2026/07/18 20:40:29 by kchiang           #+#    #+#             */
+/*   Updated: 2026/07/19 17:53:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.h"
-#include <iostream>
+#ifndef CURE_H
+#define CURE_H
 
-Ice::Ice() : AMateria("ice") {}
+#include "AMateria.h"
+#include "ICharacter.h"
+#include <string>
 
-Ice::Ice(const Ice& other): AMateria("ice") {}
-
-Ice::~Ice() {}
-
-Ice&	Ice::operator=(const Ice& rhs) {return (*this);}
-
-Ice*	Ice::clone() const {return (new Ice(*this));}
-
-void    Ice::use(ICharacter& target)
+class Cure : public AMateria
 {
-    std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
-}
+public:
+	Cure();
+	Cure(const Cure& other);
+	Cure& operator=(const Cure& rhs);
+	virtual ~Cure();
+	
+	const std::string& getType() const;
+	
+	virtual Cure* clone() const;
+	virtual void use(ICharacter& target);
+};
+
+#endif
