@@ -6,12 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 18:38:47 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/20 18:35:19 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_H
 #define ANIMAL_H
+
 #include <string>
 
 class Animal

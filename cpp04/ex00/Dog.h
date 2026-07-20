@@ -6,13 +6,15 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 17:27:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/20 18:36:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_H
 #define DOG_H
+
 #include "Animal.h"
+#include <string>
 
 class Dog : public Animal
 {

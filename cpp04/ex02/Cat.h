@@ -6,15 +6,17 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 18:01:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/20 18:34:24 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_H
 #define CAT_H
+
 #include "Animal.h"
-#include "Brain.h"
 #include <string>
+
+class Brain;
 
 class Cat : public Animal
 {

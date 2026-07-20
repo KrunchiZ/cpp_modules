@@ -6,12 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 15:56:18 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 17:27:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/20 18:36:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WRONGANIMAL_H
 #define WRONGANIMAL_H
+
 #include <string>
 
 class WrongAnimal
