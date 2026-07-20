@@ -6,11 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 20:54:56 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/19 21:16:49 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/20 17:41:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.h"
+#include "AMateria.h"
 #include <string>
 #include <cstdlib>
 
@@ -23,7 +24,12 @@ Character::Character(const std::string& name = "Default")
 		m_inventory[i] = NULL;
 }
 
-Character::Character(const Character& other) {*this = other;}
+Character::Character(const Character& other)
+	: m_name(other.m_name), m_inventoryCount(other.m_inventoryCount)
+{
+	for (int i = 0; i < 4; ++i)
+		m_inventory[i] = other.m_inventory[i] ? other.m_inventory[i]->clone() : NULL;
+}
 
 Character::~Character()
 {

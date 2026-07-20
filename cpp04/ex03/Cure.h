@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 20:40:29 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/19 17:53:16 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/20 18:23:14 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 #define CURE_H
 
 #include "AMateria.h"
-#include "ICharacter.h"
 #include <string>
+
+class ICharacter;
 
 class Cure : public AMateria
 {
 public:
 	Cure();
-	Cure(const Cure& other);
-	Cure& operator=(const Cure& rhs);
+	Cure(const Cure&);
+	Cure& operator=(const Cure&);
 	virtual ~Cure();
 	
 	const std::string& getType() const;

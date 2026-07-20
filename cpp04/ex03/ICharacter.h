@@ -6,15 +6,16 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 20:48:54 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/18 20:54:52 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/20 18:01:09 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_H
 #define ICHARACTER_H
 
-#include "AMateria.h"
 #include <string>
+
+class AMateria;
 
 class ICharacter
 {
