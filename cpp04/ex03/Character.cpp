@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/19 20:54:56 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/20 17:41:41 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/21 22:15:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 #include <string>
 #include <cstdlib>
 
-Character::Character() {}
-
-Character::Character(const std::string& name = "Default")
+Character::Character(const std::string& name)
 	: m_name(name), m_inventoryCount(0)
 {
 	for (int i = 0; i < 4; ++i)

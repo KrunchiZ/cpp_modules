@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 20:48:54 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/20 18:23:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/21 22:15:37 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class AMateria;
 class Character : public ICharacter
 {
 public:
-	Character(const std::string& name);
+	Character(const std::string& name = "Default");
 	Character(const Character& other);
 	Character& operator=(const Character& rhs);
 	virtual ~Character();
@@ -35,8 +35,6 @@ private:
 	std::string	m_name;
 	AMateria*	m_inventory[4];
 	int			m_inventoryCount;
-
-	Character();
 };
 
 #endif
