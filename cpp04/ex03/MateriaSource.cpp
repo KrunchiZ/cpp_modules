@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 15:50:48 by kchiang           #+#    #+#             */
-/*   Updated: 2026/07/20 17:31:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/07/22 17:23:49 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ MateriaSource::MateriaSource(const MateriaSource& other)
     : m_materiaCount(other.m_materiaCount)
 {
     for (int i = 0; i < 4; ++i)
+	{
+		if (m_materias[i])
+			delete m_materias[i];
         m_materias[i] = other.m_materias[i] ?
             other.m_materias[i]->clone() : NULL;
+    }
 }
 
 MateriaSource::~MateriaSource()
