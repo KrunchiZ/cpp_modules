@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:45:35 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 11:34:46 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 11:55:31 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ Bureaucrat::Bureaucrat(const string& name, int grade)
 		<< m_grade << ") has joined the office.\n";
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other) {*this = other;}
+Bureaucrat::Bureaucrat(const Bureaucrat& other)
+	: m_name(other.m_name)
+{
+	*this = other;
+}
 
 Bureaucrat::~Bureaucrat()
 {
