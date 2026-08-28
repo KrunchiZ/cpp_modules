@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:29:55 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 11:10:44 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 11:25:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ public:
 	void	decrementGrade();
 	
 private:
-	std::string	m_name;
-	int			m_grade;
+	const std::string	m_name;
+	int					m_grade;
 };
 
 class Bureaucrat::GradeTooHighException : public std::runtime_error
