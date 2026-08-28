@@ -6,11 +6,12 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:45:35 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 11:57:36 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 12:32:52 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <stdexcept>
 #include <iostream>
 #include <string>
@@ -72,6 +73,26 @@ void	Bureaucrat::decrementGrade()
 	if (m_grade == 150)
 		throw GradeTooLowException("Grade too low for " + m_name);
 	++m_grade;
+}
+
+void	Bureaucrat::signForm(Form& form) const
+{
+	if (form.isSigned())
+		cout << m_name << " couldn't sign " << form.getName()
+			<< " because it is already signed.\n";
+	else
+	{
+		try
+		{
+			form.beSigned(*this);
+			cout << m_name << " signed " << form.getName() << ".\n";
+		}
+		catch (const Form::GradeTooLowException&)
+		{
+			cout << m_name << " couldn't sign " << form.getName()
+				<< " because grade is too low.\n";
+		}
+	}
 }
 
 ostream& operator<<(ostream& out, const Bureaucrat& bureaucrat)

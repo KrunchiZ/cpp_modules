@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:29:55 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 12:10:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 12:28:08 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ public:
 
 	void	incrementGrade();
 	void	decrementGrade();
-	void	signForm(const Form& form) const;
+	void	signForm(Form& form) const;
 	
 private:
 	const std::string	m_name;

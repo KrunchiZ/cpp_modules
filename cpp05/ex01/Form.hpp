@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:21 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 12:20:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 12:26:50 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ public:
 	const int&			getSignGrade() const;
 	const int&			getExecGrade() const;
 	const bool&			isSigned() const;
+	
+	void	beSigned(const class Bureaucrat& bureaucrat);
 
 private:
 	const std::string	m_name;
