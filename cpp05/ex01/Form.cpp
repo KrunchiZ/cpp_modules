@@ -6,16 +6,26 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 12:21:58 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 14:20:35 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
+#include <iostream>
+#include <string>
+#include <stdexcept>
 
 using std::string;
 using std::runtime_error;
 using std::ostream;
 using std::cout;
+
+Form::GradeTooHighException::GradeTooHighException(const string& str)
+	: runtime_error(str) {}
+
+Form::GradeTooLowException::GradeTooLowException(const string& str)
+	: runtime_error(str) {}
 
 Form::Form(const string& name, const int& signGrade, const int& execGrade)
 	: m_name(name)
@@ -51,4 +61,27 @@ Form&	Form::operator=(const Form& rhs)
 		return (*this);
 	m_isSigned = rhs.m_isSigned;
 	return (*this);
+}
+
+const string&	Form::getName() const {return (m_name);}
+const int&		Form::getSignGrade() const {return (m_signGrade);}
+const int&		Form::getExecGrade() const {return (m_execGrade);}
+const bool&		Form::isSigned() const {return (m_isSigned);}
+
+void	Form::beSigned(const Bureaucrat& bureaucrat)
+{
+	if (bureaucrat.getGrade() > m_signGrade)
+		throw GradeTooLowException(bureaucrat.getName() + "'s grade is too low.");
+	m_isSigned = true;
+}
+
+ostream&	operator<<(ostream& out, const Form& form)
+{
+	out << form.getName() << ", sign grade " << form.getSignGrade()
+		<< ", execute grade " << form.getExecGrade(); 
+	if (form.isSigned())
+		out << ", signed.\n";
+	else
+		out << ", not signed.\n";
+	return (out);
 }

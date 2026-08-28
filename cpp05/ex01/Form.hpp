@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:21 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 12:26:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 14:16:42 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <iostream>
 #include <stdexcept>
 
+class Bureaucrat;
 class Form
 {
 public:
@@ -39,7 +40,7 @@ public:
 	const int&			getExecGrade() const;
 	const bool&			isSigned() const;
 	
-	void	beSigned(const class Bureaucrat& bureaucrat);
+	void	beSigned(const Bureaucrat& bureaucrat);
 
 private:
 	const std::string	m_name;
@@ -60,7 +61,7 @@ public:
 	GradeTooLowException(const std::string& str = "Exceeded lowest grade 150");
 };
 
-std::ostream& operator<<(std::ostream& out, const Form& Form);
+std::ostream& operator<<(std::ostream& out, const Form& form);
 
 
 #endif
