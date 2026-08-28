@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 14:20:35 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 15:39:02 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ void	Form::beSigned(const Bureaucrat& bureaucrat)
 
 ostream&	operator<<(ostream& out, const Form& form)
 {
-	out << form.getName() << ", sign grade " << form.getSignGrade()
-		<< ", execute grade " << form.getExecGrade(); 
+	out << form.getName() << ", grade to sign: " << form.getSignGrade()
+		<< ", grade to execute: " << form.getExecGrade(); 
 	if (form.isSigned())
-		out << ", signed.\n";
+		out << ", signed.";
 	else
-		out << ", not signed.\n";
+		out << ", not signed.";
 	return (out);
 }

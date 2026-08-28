@@ -6,63 +6,64 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 11:20:23 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 11:49:24 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 15:48:38 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 #include <exception>
 
+using std::cout;
+using std::cerr;
+
 int main()
 {
-	try
 	{
-		Bureaucrat chiang("Chiang", 1);
-		std::cout << chiang << '\n';
-		std::cout << "Decrementing grade...\n";
-		chiang.decrementGrade();
-		std::cout << chiang << '\n';
-		std::cout << "Incrementing grade...\n";
-		chiang.incrementGrade();
-		std::cout << chiang << '\n';
+		Form form("Form_A", 10, 10);
 		{
-			Bureaucrat alice("Alice", 150);
-			std::cout << alice << '\n';
-			std::cout << "Alice copies Chiang...\n";
-			alice = chiang;
-			std::cout << alice << '\n';
-		} // Alice goes out of scope here.
-		
-		// Will throw exception after unwinding the stack, 
-		// showing the destructor message.
-		std::cout << "Incrementing Chiang's grade. Will throw exception and unwind the stack...\n";
-		chiang.incrementGrade();
+			Bureaucrat chiang("Chiang", 1);	
+			cout << chiang << '\n';
+			cout << form << '\n';
+			chiang.signForm(form);
+			cout << form << '\n';
+			chiang.signForm(form);
+		}
+		cout << '\n';
+		{
+			Bureaucrat donald("Donald", 11);
+			Form formB(form);
+			cout << donald << '\n';
+			cout << formB << '\n';
+			donald.signForm(formB);
+			cout << "Donald's incrementing his grade.\n";
+			donald.incrementGrade();
+			cout << donald << '\n';
+			donald.signForm(formB);
+			cout << formB << '\n';
+		}
 	}
-	catch (const std::exception& ex)
-	{
-		std::cerr << "Bureaucrat error: " << ex.what() << '\n';
-	}
-	
-	std::cout << '\n';
-	try
-	{
-		Bureaucrat bureaucrat("Donald", 151);
-		std::cout << bureaucrat << '\n';
-	}
-	catch (const std::exception& ex)
-	{
-		std::cerr << "Bureaucrat error: " << ex.what() << '\n';
-	}
+
+	cout << '\n';
 
 	try
 	{
-		Bureaucrat bureaucrat("Trump", 0);
-		std::cout << bureaucrat << '\n';
+		Form buildWall("Build_Wall", 151);
+		cout << buildWall << '\n';
 	}
 	catch (const std::exception& ex)
 	{
-		std::cerr << "Bureaucrat error: " << ex.what() << '\n';
+		cerr << "error: " << ex.what() << '\n';
+	}
+	try
+	{
+		Form buildWall("Build_Wall", 0);
+		cout << buildWall << '\n';
+	}
+	catch (const std::exception& ex)
+	{
+		cerr << "error: " << ex.what() << '\n';
 	}
 	return (0);
 }
