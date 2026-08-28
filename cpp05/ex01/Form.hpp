@@ -1,60 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/28 10:29:55 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 12:10:39 by kchiang          ###   ########.fr       */
+/*   Created: 2026/08/28 12:00:21 by kchiang           #+#    #+#             */
+/*   Updated: 2026/08/28 12:20:55 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
-#include <stdexcept>
-#include <iostream>
 #include <string>
+#include <iostream>
+#include <stdexcept>
 
-class Form;
-class Bureaucrat
+class Form
 {
 public:
 	class GradeTooHighException;
 	class GradeTooLowException;
-
-	Bureaucrat(const std::string& name = "Foo", int grade = 150);
-	Bureaucrat(const Bureaucrat& other);
-	~Bureaucrat();
-
-	Bureaucrat&	operator=(const Bureaucrat& rhs);
-
-	const std::string&	getName() const;
-	const int&			getGrade() const;
-
-	void	incrementGrade();
-	void	decrementGrade();
-	void	signForm(const Form& form) const;
 	
+	Form(
+		const std::string& name = "Random Form",
+		const int& signGrade = 150,
+		const int& execGrade = 150
+	);
+	Form(const Form& other);
+	~Form();
+
+	Form&	operator=(const Form& rhs);
+	
+	const std::string&	getName() const;
+	const int&			getSignGrade() const;
+	const int&			getExecGrade() const;
+	const bool&			isSigned() const;
+
 private:
 	const std::string	m_name;
-	int					m_grade;
+	const int			m_signGrade;
+	const int			m_execGrade;
+	bool                m_isSigned;
 };
 
-class Bureaucrat::GradeTooHighException : public std::runtime_error
+class Form::GradeTooHighException : public std::runtime_error
 {
 public:
 	GradeTooHighException(const std::string& str = "Exceeded highest grade 1");
 };
 
-class Bureaucrat::GradeTooLowException : public std::runtime_error
+class Form::GradeTooLowException : public std::runtime_error
 {
 public:
 	GradeTooLowException(const std::string& str = "Exceeded lowest grade 150");
 };
 
-std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat);
+std::ostream& operator<<(std::ostream& out, const Form& Form);
+
 
 #endif
