@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 12:20:54 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/28 12:21:58 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ Form::Form(const string& name, const int& signGrade, const int& execGrade)
 }
 
 Form::Form(const Form& other)
-    : m_name(other.m_name)
-    , m_signGrade(other.m_signGrade)
-    , m_execGrade(other.m_execGrade)
-    , m_isSigned(false) {}
+	: m_name(other.m_name)
+	, m_signGrade(other.m_signGrade)
+	, m_execGrade(other.m_execGrade)
+	, m_isSigned(false) {}
 
 Form::~Form()
 {
