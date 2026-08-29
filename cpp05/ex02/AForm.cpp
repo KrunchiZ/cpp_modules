@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/29 14:56:18 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/29 16:59:46 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,16 @@ AForm::AForm(const AForm& other)
 	: m_name(other.m_name)
 	, m_signGrade(other.m_signGrade)
 	, m_execGrade(other.m_execGrade)
-	, m_isSigned(false) {}
+	, m_isSigned(false)
+{
+	cout << "AForm " << m_name << "(Sign Grade "
+		<< m_signGrade << ", Exec Grade "
+		<< m_execGrade << ") has been copied.\n";
+}
 
 AForm::~AForm()
 {
-	cout << m_name << "(Sign Grade "
-		<< m_signGrade << ", Exec Grade "
+	cout << m_name << "(Sign Grade " << m_signGrade << ", Exec Grade "
 		<< m_execGrade << ") down the paper shredder.\n";
 }
 
