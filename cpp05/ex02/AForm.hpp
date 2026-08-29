@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:21 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 14:16:42 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/29 14:43:30 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AAForm_HPP
+#define AAForm_HPP
 
 #include <string>
 #include <iostream>
 #include <stdexcept>
 
 class Bureaucrat;
-class Form
+
+class AForm
 {
 public:
 	class GradeTooHighException;
 	class GradeTooLowException;
 	
-	Form(
-		const std::string& name = "Random Form",
+	AForm(
+		const std::string& name = "AForm",
 		const int& signGrade = 150,
 		const int& execGrade = 150
 	);
-	Form(const Form& other);
-	~Form();
+	AForm(const AForm& other);
+	virtual ~AForm();
 
-	Form&	operator=(const Form& rhs);
+	AForm&	operator=(const AForm& rhs);
 	
 	const std::string&	getName() const;
 	const int&			getSignGrade() const;
@@ -41,6 +42,8 @@ public:
 	const bool&			isSigned() const;
 	
 	void	beSigned(const Bureaucrat& bureaucrat);
+	
+	virtual void	execute(const Bureaucrat& executor) const = 0;
 
 private:
 	const std::string	m_name;
@@ -49,19 +52,19 @@ private:
 	bool                m_isSigned;
 };
 
-class Form::GradeTooHighException : public std::runtime_error
+class AForm::GradeTooHighException : public std::runtime_error
 {
 public:
 	GradeTooHighException(const std::string& str = "Exceeded highest grade 1");
 };
 
-class Form::GradeTooLowException : public std::runtime_error
+class AForm::GradeTooLowException : public std::runtime_error
 {
 public:
 	GradeTooLowException(const std::string& str = "Exceeded lowest grade 150");
 };
 
-std::ostream& operator<<(std::ostream& out, const Form& form);
+std::ostream& operator<<(std::ostream& out, const AForm& AForm);
 
 
 #endif

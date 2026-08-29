@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 15:39:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/29 14:44:02 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
@@ -21,13 +21,13 @@ using std::runtime_error;
 using std::ostream;
 using std::cout;
 
-Form::GradeTooHighException::GradeTooHighException(const string& str)
+AForm::GradeTooHighException::GradeTooHighException(const string& str)
 	: runtime_error(str) {}
 
-Form::GradeTooLowException::GradeTooLowException(const string& str)
+AForm::GradeTooLowException::GradeTooLowException(const string& str)
 	: runtime_error(str) {}
 
-Form::Form(const string& name, const int& signGrade, const int& execGrade)
+AForm::AForm(const string& name, const int& signGrade, const int& execGrade)
 	: m_name(name)
 	, m_signGrade(signGrade)
 	, m_execGrade(execGrade)
@@ -37,25 +37,25 @@ Form::Form(const string& name, const int& signGrade, const int& execGrade)
 		throw GradeTooHighException("Grade too high for " + name);
 	if (signGrade > 150 || execGrade > 150)
 		throw GradeTooLowException("Grade too low for " + name);
-	cout << "Form " << m_name << "(Sign Grade "
+	cout << "AForm " << m_name << "(Sign Grade "
 		<< m_signGrade << ", Exec Grade "
 		<< m_execGrade << ") has been created.\n";
 }
 
-Form::Form(const Form& other)
+AForm::AForm(const AForm& other)
 	: m_name(other.m_name)
 	, m_signGrade(other.m_signGrade)
 	, m_execGrade(other.m_execGrade)
 	, m_isSigned(false) {}
 
-Form::~Form()
+AForm::~AForm()
 {
-	cout << "Form " << m_name << "(Sign Grade "
+	cout << m_name << "(Sign Grade "
 		<< m_signGrade << ", Exec Grade "
 		<< m_execGrade << ") down the paper shredder.\n";
 }
 
-Form&	Form::operator=(const Form& rhs)
+AForm&	AForm::operator=(const AForm& rhs)
 {
 	if (this == &rhs)
 		return (*this);
@@ -63,23 +63,31 @@ Form&	Form::operator=(const Form& rhs)
 	return (*this);
 }
 
-const string&	Form::getName() const {return (m_name);}
-const int&		Form::getSignGrade() const {return (m_signGrade);}
-const int&		Form::getExecGrade() const {return (m_execGrade);}
-const bool&		Form::isSigned() const {return (m_isSigned);}
+const string&	AForm::getName() const {return (m_name);}
+const int&		AForm::getSignGrade() const {return (m_signGrade);}
+const int&		AForm::getExecGrade() const {return (m_execGrade);}
+const bool&		AForm::isSigned() const {return (m_isSigned);}
 
-void	Form::beSigned(const Bureaucrat& bureaucrat)
+void	AForm::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() > m_signGrade)
-		throw GradeTooLowException(bureaucrat.getName() + "'s grade is too low.");
+		throw GradeTooLowException(bureaucrat.getName() + " is not authorized to sign this form.");
 	m_isSigned = true;
 }
 
-ostream&	operator<<(ostream& out, const Form& form)
+void	AForm::execute(const Bureaucrat& executor) const
 {
-	out << form.getName() << ", grade to sign: " << form.getSignGrade()
-		<< ", grade to execute: " << form.getExecGrade(); 
-	if (form.isSigned())
+	if (!m_isSigned)
+		throw runtime_error("Form " + m_name + " is not signed.");
+	if (executor.getGrade() > m_execGrade)
+		throw GradeTooLowException(executor.getName() + " is not authorized to execute this form.");
+}
+
+ostream&	operator<<(ostream& out, const AForm& AForm)
+{
+	out << AForm.getName() << ", grade to sign: " << AForm.getSignGrade()
+		<< ", grade to execute: " << AForm.getExecGrade(); 
+	if (AForm.isSigned())
 		out << ", signed.";
 	else
 		out << ", not signed.";
