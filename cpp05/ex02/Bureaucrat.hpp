@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:29:55 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 12:28:08 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/29 14:52:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <iostream>
 #include <string>
 
-class Form;
+class AForm;
 class Bureaucrat
 {
 public:
@@ -36,7 +36,8 @@ public:
 
 	void	incrementGrade();
 	void	decrementGrade();
-	void	signForm(Form& form) const;
+	void	signForm(AForm& form) const;
+	void	executeForm(const AForm& form) const;
 	
 private:
 	const std::string	m_name;

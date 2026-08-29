@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/29 14:44:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/29 14:56:18 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,19 @@ const bool&		AForm::isSigned() const {return (m_isSigned);}
 
 void	AForm::beSigned(const Bureaucrat& bureaucrat)
 {
+	if (m_isSigned)
+		throw runtime_error(m_name + " is already signed.");
 	if (bureaucrat.getGrade() > m_signGrade)
-		throw GradeTooLowException(bureaucrat.getName() + " is not authorized to sign this form.");
+		throw GradeTooLowException("insufficient grade to sign.");
 	m_isSigned = true;
 }
 
 void	AForm::execute(const Bureaucrat& executor) const
 {
 	if (!m_isSigned)
-		throw runtime_error("Form " + m_name + " is not signed.");
+		throw runtime_error(m_name + " is not signed.");
 	if (executor.getGrade() > m_execGrade)
-		throw GradeTooLowException(executor.getName() + " is not authorized to execute this form.");
+		throw GradeTooLowException("insufficient grade to execute.");
 }
 
 ostream&	operator<<(ostream& out, const AForm& AForm)
