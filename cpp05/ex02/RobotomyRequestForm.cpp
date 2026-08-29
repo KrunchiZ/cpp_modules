@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 03:25:42 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 03:35:58 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Bureaucrat.hpp"
 #include <string>
 #include <iostream>
-#include <cstdlib>
+#include <ctime>
 #include <exception>
 #include <stdexcept>
 
@@ -72,7 +72,7 @@ void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	AForm::execute(executor);
 
-	if (std::rand() % 2)
+	if (std::time(NULL) % 2)
 		cout << "*** Drilling noises *** "
 			<< m_target << " has been robotomized successfully.\n";
 	else

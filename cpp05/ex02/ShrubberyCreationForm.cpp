@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 03:25:50 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 03:28:27 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 			+ m_target + "_shrubbery");
 	
 	outfile
-		<< "	   { ^ }\n"
-		<< "	{    o    }\n"
+		<< "       { ^ }\n"
+		<< "    {    o    }\n"
 		<< "  {             }\n"
 		<< " {   o        o  }\n"
 		<< "  {  _- o   -_  }\n"
