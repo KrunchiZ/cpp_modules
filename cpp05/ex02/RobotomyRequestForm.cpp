@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 02:58:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 03:25:42 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ catch (const std::exception& ex)
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	cout << getName() << "(Sign Grade " << getSignGrade() << ", Exec Grade "
+	cout << "Derived AForm:" << getName() << "(Sign Grade "
+		<< getSignGrade() << ", Exec Grade "
 		<< getExecGrade() << ") down the paper shredder.\n";
 }
 

@@ -49,7 +49,8 @@ catch (const std::exception& ex)
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	cout << getName() << "(Sign Grade " << getSignGrade() << ", Exec Grade "
+	cout << "Derived AForm:" << getName() << "(Sign Grade "
+		<< getSignGrade() << ", Exec Grade "
 		<< getExecGrade() << ") down the paper shredder.\n";
 }
 
