@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/29 17:35:30 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 02:36:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 
 	std::ofstream outfile((m_target + "_shrubbery").c_str());
 	if (!outfile.is_open())
-		throw std::runtime_error("Failed to open file: " + m_target + "_shrubbery");
+		throw std::runtime_error("Failed to open file: "
+			+ m_target + "_shrubbery");
+	
 	outfile
 		<< "	   { ^ }\n"
 		<< "	{    o    }\n"
@@ -84,5 +86,9 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 		<< " _- -   | | _- _\n"
 		<< "   _ -  | |   -_\n"
 		<< " ______// \\\\______\n";
+
+	if (!outfile.good())
+		throw std::runtime_error("I/O error while writing to "
+			+ m_target + "_shrubbery");
 	outfile.close();
 }
