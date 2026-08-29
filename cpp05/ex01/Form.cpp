@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/28 15:39:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/29 14:57:41 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ const bool&		Form::isSigned() const {return (m_isSigned);}
 
 void	Form::beSigned(const Bureaucrat& bureaucrat)
 {
+	if (m_isSigned)
+		throw runtime_error(m_name + " is already signed.");
 	if (bureaucrat.getGrade() > m_signGrade)
 		throw GradeTooLowException(bureaucrat.getName() + "'s grade is too low.");
 	m_isSigned = true;
