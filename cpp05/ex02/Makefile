@@ -3,7 +3,10 @@ CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 NAME		= ex02
 SRC			= main.cpp			\
-			  Bureaucrat.cpp	Form.cpp
+			  Bureaucrat.cpp	AForm.cpp	\
+			  ShrubberyCreationForm.cpp		\
+			  RobotomyRequestForm.cpp		\
+			  PresidentialPardonForm.cpp
 
 OBJS_DIR	= build/
 
