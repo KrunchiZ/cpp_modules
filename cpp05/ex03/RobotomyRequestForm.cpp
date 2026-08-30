@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 12:56:33 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 22:34:25 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ using std::cerr;
 RobotomyRequestForm::RobotomyRequestForm(const string& name, const string& target)
 try	: AForm(name, 72, 45), m_target(target)
 {
-	if (name != "robotomy request")
+	if (getName() != "robotomy request")
 		throw AForm::InvalidNameException();
 	cout << "Derived AForm:" << getName() << "(Sign Grade "
 		<< getSignGrade() << ", Exec Grade "

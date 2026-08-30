@@ -25,7 +25,7 @@ using std::cerr;
 PresidentialPardonForm::PresidentialPardonForm(const string& name, const string& target)
 try	: AForm(name, 25, 5), m_target(target)
 {
-	if (name != "presidential pardon")
+	if (getName() != "presidential pardon")
 		throw AForm::InvalidNameException();
 	cout << "Derived AForm:" << getName() << "(Sign Grade "
 		<< getSignGrade() << ", Exec Grade "
