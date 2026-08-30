@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 11:51:04 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 12:56:48 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 using std::string;
 using std::cout;
+using std::cerr;
 
 ShrubberyCreationForm::ShrubberyCreationForm(const string& name, const string& target)
 try	: AForm(name, 145, 137), m_target(target)
@@ -31,9 +32,13 @@ try	: AForm(name, 145, 137), m_target(target)
 		<< getSignGrade() << ", Exec Grade "
 		<< getExecGrade() << ") has been created.\n";
 }
+catch (const AForm::InvalidNameException&)
+{
+	throw;
+}
 catch (const std::exception& ex)
 {
-	cout << "Form Error: " << ex.what() << "\n";
+	cerr << "Form Error: " << ex.what() << "\n";
 	throw;
 }
 
@@ -46,7 +51,7 @@ try	: AForm(other), m_target(other.m_target)
 }
 catch (const std::exception& ex)
 {
-	cout << "Form Error: " << ex.what() << "\n";
+	cerr << "Form Error: " << ex.what() << "\n";
 	throw;
 }
 
