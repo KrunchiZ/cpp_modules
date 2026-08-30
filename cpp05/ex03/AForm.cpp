@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 11:38:33 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 12:38:04 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <cctype>
 
 using std::string;
 using std::runtime_error;
 using std::ostream;
 using std::cout;
+
+namespace
+{
+const string	parse_name(const string& name);
+void			str_tolower(string& str);
+void			strip(string& str);
+}
 
 AForm::GradeTooHighException::GradeTooHighException(const string& str)
 	: runtime_error(str) {}
@@ -31,7 +39,7 @@ AForm::InvalidNameException::InvalidNameException(const string& str)
 	: runtime_error(str) {}
 	
 AForm::AForm(const string& name, const int& signGrade, const int& execGrade)
-	: m_name(name)
+	: m_name(parse_name(name))
 	, m_signGrade(signGrade)
 	, m_execGrade(execGrade)
 	, m_isSigned(false)
@@ -40,6 +48,8 @@ AForm::AForm(const string& name, const int& signGrade, const int& execGrade)
 		throw GradeTooHighException("Grade too high for " + name);
 	if (signGrade > 150 || execGrade > 150)
 		throw GradeTooLowException("Grade too low for " + name);
+	if (m_name.empty())
+		throw InvalidNameException("Empty form name");
 	cout << "AForm " << m_name << "(Sign Grade "
 		<< m_signGrade << ", Exec Grade "
 		<< m_execGrade << ") has been created.\n";
@@ -102,4 +112,36 @@ ostream&	operator<<(ostream& out, const AForm& AForm)
 	else
 		out << ", not signed.";
 	return (out);
+}
+
+namespace
+{
+const string	parse_name(const string& name)
+{
+	string result(name);
+	strip(result);
+	str_tolower(result);
+	return (result);
+}
+
+void	str_tolower(string& str)
+{
+	for (size_t i = 0; i < str.length(); ++i)
+		str[i] = std::tolower(str[i]);
+}
+
+void	strip(string& str)
+{
+	if (str.empty())
+		return;
+	string::size_type needle;
+
+	needle = str.find_first_not_of(" \t\n\r\f\v");
+	if (needle != string::npos)
+		str.erase(0, needle);
+
+	needle = str.find_last_not_of(" \t\n\r\f\v");
+	if (needle != string::npos)
+		str.erase(needle + 1);
+}	
 }

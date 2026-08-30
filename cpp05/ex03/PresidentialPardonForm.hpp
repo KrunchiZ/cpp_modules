@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:31:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 03:01:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 11:48:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat;
 class PresidentialPardonForm : public AForm
 {
 public:
-	PresidentialPardonForm(const std::string& target = "default");
+	PresidentialPardonForm(const std::string& name, const std::string& target = "default");
 	PresidentialPardonForm(const PresidentialPardonForm& other);
 	virtual ~PresidentialPardonForm();
 

@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:31:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/29 17:02:10 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 11:48:09 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat;
 class ShrubberyCreationForm : public AForm
 {
 public:
-	ShrubberyCreationForm(const std::string& target = "default");
+	ShrubberyCreationForm(const std::string& name, const std::string& target = "default");
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
 	virtual ~ShrubberyCreationForm();
 

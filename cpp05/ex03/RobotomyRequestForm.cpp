@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 03:35:58 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 11:49:33 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 using std::string;
 using std::cout;
 
-RobotomyRequestForm::RobotomyRequestForm(const string& target)
-try	: AForm("RobotomyRequestForm", 72, 45), m_target(target)
+RobotomyRequestForm::RobotomyRequestForm(const string& name, const string& target)
+try	: AForm(name, 72, 45), m_target(target)
 {
 	cout << "Derived AForm:" << getName() << "(Sign Grade "
 		<< getSignGrade() << ", Exec Grade "

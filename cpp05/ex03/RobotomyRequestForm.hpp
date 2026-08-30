@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:31:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 02:43:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 11:48:22 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Bureaucrat;
 class RobotomyRequestForm : public AForm
 {
 public:
-	RobotomyRequestForm(const std::string& target = "default");
+	RobotomyRequestForm(const std::string& name, const std::string& target = "default");
 	RobotomyRequestForm(const RobotomyRequestForm& other);
 	virtual ~RobotomyRequestForm();
 

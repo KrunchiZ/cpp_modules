@@ -21,8 +21,8 @@
 using std::string;
 using std::cout;
 
-PresidentialPardonForm::PresidentialPardonForm(const string& target)
-try	: AForm("PresidentialPardonForm", 25, 5), m_target(target)
+PresidentialPardonForm::PresidentialPardonForm(const string& name, const string& target)
+try	: AForm(name, 25, 5), m_target(target)
 {
 	cout << "Derived AForm:" << getName() << "(Sign Grade "
 		<< getSignGrade() << ", Exec Grade "
