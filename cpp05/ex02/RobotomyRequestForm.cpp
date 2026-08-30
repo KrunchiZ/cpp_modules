@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:34:46 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 03:35:58 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 12:52:02 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 using std::string;
 using std::cout;
+using std::cerr;
 
 RobotomyRequestForm::RobotomyRequestForm(const string& target)
 try	: AForm("RobotomyRequestForm", 72, 45), m_target(target)
@@ -31,7 +32,7 @@ try	: AForm("RobotomyRequestForm", 72, 45), m_target(target)
 }
 catch (const std::exception& ex)
 {
-	cout << "Form Error: " << ex.what() << "\n";
+	cerr << "Form Error: " << ex.what() << "\n";
 	throw;
 }
 
@@ -44,7 +45,7 @@ try	: AForm(other), m_target(other.m_target)
 }
 catch (const std::exception& ex)
 {
-	cout << "Form Error: " << ex.what() << "\n";
+	cerr << "Form Error: " << ex.what() << "\n";
 	throw;
 }
 

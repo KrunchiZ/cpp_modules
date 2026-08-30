@@ -20,6 +20,7 @@
 
 using std::string;
 using std::cout;
+using std::cerr;
 
 PresidentialPardonForm::PresidentialPardonForm(const string& target)
 try	: AForm("PresidentialPardonForm", 25, 5), m_target(target)
@@ -30,7 +31,7 @@ try	: AForm("PresidentialPardonForm", 25, 5), m_target(target)
 }
 catch (const std::exception& ex)
 {
-	cout << "Form Error: " << ex.what() << "\n";
+	cerr << "Form Error: " << ex.what() << "\n";
 	throw;
 }
 
@@ -43,7 +44,7 @@ try	: AForm(other), m_target(other.m_target)
 }
 catch (const std::exception& ex)
 {
-	cout << "Form Error: " << ex.what() << "\n";
+	cerr << "Form Error: " << ex.what() << "\n";
 	throw;
 }
 

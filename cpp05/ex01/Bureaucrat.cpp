@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 10:45:35 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/29 14:57:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 12:49:54 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ using std::string;
 using std::runtime_error;
 using std::ostream;
 using std::cout;
+using std::cerr;
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const string& str)
 	: runtime_error(str) {}
@@ -84,12 +85,12 @@ void	Bureaucrat::signForm(Form& form) const
 	}
 	catch (const Form::GradeTooLowException&)
 	{
-		cout << m_name << " couldn't sign " << form.getName()
+		cerr << m_name << " couldn't sign " << form.getName()
 			<< " because grade is too low.\n";
 	}
 	catch (const std::runtime_error& ex)
 	{
-		cout << m_name << " couldn't sign " << form.getName()
+		cerr << m_name << " couldn't sign " << form.getName()
 			<< " because " << ex.what() << "\n";
 	}
 }
