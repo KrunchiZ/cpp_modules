@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 12:00:44 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/29 14:57:41 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/30 12:33:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ using std::runtime_error;
 using std::ostream;
 using std::cout;
 
+namespace
+{
+const string	parse_name(const string& name);
+void			strip(string& str);
+}
+
 Form::GradeTooHighException::GradeTooHighException(const string& str)
 	: runtime_error(str) {}
 
@@ -28,7 +34,7 @@ Form::GradeTooLowException::GradeTooLowException(const string& str)
 	: runtime_error(str) {}
 
 Form::Form(const string& name, const int& signGrade, const int& execGrade)
-	: m_name(name)
+	: m_name(parse_name(name))
 	, m_signGrade(signGrade)
 	, m_execGrade(execGrade)
 	, m_isSigned(false)
@@ -37,6 +43,8 @@ Form::Form(const string& name, const int& signGrade, const int& execGrade)
 		throw GradeTooHighException("Grade too high for " + name);
 	if (signGrade > 150 || execGrade > 150)
 		throw GradeTooLowException("Grade too low for " + name);
+	if (m_name.empty())
+		throw runtime_error("Empty form name");
 	cout << "Form " << m_name << "(Sign Grade "
 		<< m_signGrade << ", Exec Grade "
 		<< m_execGrade << ") has been created.\n";
@@ -86,4 +94,29 @@ ostream&	operator<<(ostream& out, const Form& form)
 	else
 		out << ", not signed.";
 	return (out);
+}
+
+namespace
+{
+const string	parse_name(const string& name)
+{
+	string result(name);
+	strip(result);
+	return (result);
+}
+
+void	strip(string& str)
+{
+	if (str.empty())
+		return;
+	string::size_type needle;
+
+	needle = str.find_first_not_of(" \t\n\r\f\v");
+	if (needle != string::npos)
+		str.erase(0, needle);
+
+	needle = str.find_last_not_of(" \t\n\r\f\v");
+	if (needle != string::npos)
+		str.erase(needle + 1);
+}	
 }
