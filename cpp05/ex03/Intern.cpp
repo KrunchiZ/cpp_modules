@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 11:41:16 by kchiang           #+#    #+#             */
-/*   Updated: 2026/08/30 13:28:02 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/08/31 11:47:54 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,19 @@ AForm*  Intern::makeForm(const string& form_name, const string& target)
 {
 	try
 	{
-		AForm* form = new ShrubberyCreationForm(form_name, target);
-		return (form);
+		return (new ShrubberyCreationForm(form_name, target));
 	}
 	catch (const std::exception&) {}
 	
 	try
 	{
-		AForm* form = new RobotomyRequestForm(form_name, target);
-		return (form);
+		return (new RobotomyRequestForm(form_name, target));
 	}
 	catch (const std::exception&) {}
 
 	try
 	{
-		AForm* form = new PresidentialPardonForm(form_name, target);
-		return (form);
+		return (new PresidentialPardonForm(form_name, target));
 	}
 	catch (const std::exception& ex)
 	{
