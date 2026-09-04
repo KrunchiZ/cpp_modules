@@ -6,12 +6,13 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 13:08:12 by kchiang           #+#    #+#             */
-/*   Updated: 2026/09/04 16:36:34 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/09/04 18:25:12 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <limits>
 #include <cctype>
@@ -21,18 +22,20 @@
 
 namespace
 {
-	void str_tolower(std::string& str);
-	bool isChar(const std::string& input);
-	bool isInt(const std::string& input);
-	bool isFloat(const std::string& input);
-	bool isDouble(const std::string& input);
-	bool isSpecialFloat(const std::string& input);
-	void process_int(const std::string& input);
-	void process_float(const std::string& input);
-	void process_double(const std::string& input);
-	void print_char(int ch);	
-	void print_float(double value);
-	void print_double(long double value);	
+	void	str_tolower(std::string& str);
+	bool	isChar(const std::string& input);
+	bool	isInt(const std::string& input);
+	bool	isFloat(const std::string& input);
+	bool	isDouble(const std::string& input);
+	bool	isSpecial(const std::string& input);
+	void	process_char(const std::string& input);
+	void	process_int(const std::string& input);
+	void	process_float(const std::string& input);
+	void	process_double(const std::string& input);
+	void	process_special(const std::string& input);
+	void	print_char(int ch);	
+	void	print_float(double value, int precision = 1);
+	void	print_double(long double value, int precision = 1);	
 }
 
 ScalarConverter::ScalarConverter() {}
@@ -43,45 +46,23 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter&) {return *thi
 void ScalarConverter::convert(std::string input)
 {
 	str_tolower(input);
-	if (isSpecialFloat(input))
-	{
-		std::cout << "char: impossible\nint: impossible\n";
-		if (input == "nanf")
-			print_float(std::numeric_limits<float>::quiet_NaN());
-		else if (input == "+inff")
-			print_float(std::numeric_limits<float>::infinity());
-		else if (input == "-inff")
-			print_float(-std::numeric_limits<float>::infinity());
-	}
-	else if (isSpecialDouble(input))
-	{
-		std::cout << "char: impossible\nint: impossible\n";
-		if (input == "nan")
-			print_double(std::numeric_limits<double>::quiet_NaN());
-		else if (input == "+inf")
-			print_double(std::numeric_limits<double>::infinity());
-		else if (input == "-inf")
-			print_double(-std::numeric_limits<double>::infinity());
-	}
+	if (isSpecial(input))
+		process_special(input);
 	else if (isChar(input))
-	{
-		char ch = input[1];
-		print_char(ch);
-		std::cout << "int: " << static_cast<int>(ch) << "\n";
-		print_float(static_cast<float>(ch));
-		print_double(static_cast<double>(ch));
-	}
+		process_char(input);
 	else if (isInt(input))
 		process_int(input);
 	else if (isFloat(input))
 		process_float(input);
 	else if (isDouble(input))
 		process_double(input);
+	else
+		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
 }
 
 namespace
 {
-	void str_tolower(std::string& str)
+	void	str_tolower(std::string& str)
 	{
 		for (size_t i = 0; i < str.length(); ++i)
 		{
@@ -90,27 +71,29 @@ namespace
 		}
 	}
 	
-	bool isChar(const std::string& input)
+	bool	isChar(const std::string& input)
 	{
 		return (input.length() == 3 && std::isprint(input[1])
 		&& input[0] == '\'' && input[2] == '\'');
 	}
 	
-	bool isInt(const std::string& input)
+	bool	isInt(const std::string& input)
 	{
 		for (size_t i = 0; i < input.length(); ++i)
 		{
 			if (i == 0 && (input[i] == '-' || input[i] == '+'))
-			continue;
+				continue;
 			if (!std::isdigit(input[i]))
 				return (false);
-			}
-			return (true);
 		}
+		return (true);
+	}
 
-	bool isFloat(const std::string& input)
+	bool	isFloat(const std::string& input)
 	{
 		bool hasDot = false;
+		if (input[input.length() - 1] != 'f')
+			return (false);
 		for (size_t i = 0; i < input.length(); ++i)
 		{
 			if (i == 0 && (input[i] == '-' || input[i] == '+'))
@@ -132,13 +115,13 @@ namespace
 		return (true);
 	}
 
-	bool isDouble(const std::string& input)
+	bool	isDouble(const std::string& input)
 	{
 		bool hasDot = false;
 		for (size_t i = 0; i < input.length(); ++i)
 		{
 			if (i == 0 && (input[i] == '-' || input[i] == '+'))
-			continue;
+				continue;
 			if (input[i] == '.')
 			{
 				if (hasDot)
@@ -152,17 +135,22 @@ namespace
 		return (true);
 	}
 	
-	bool isSpecialFloat(const std::string& input)
+	bool	isSpecial(const std::string& input)
 	{
-		return (input == "nanf" || input == "+inff" || input == "-inff");
+		return (input == "nanf" || input == "+inff" || input == "-inff"
+			|| input == "nan" || input == "+inf" || input == "-inf");
 	}
 
-	bool isSpecialDouble(const std::string& input)
+	void	process_char(const std::string& input)
 	{
-		return (input == "nan" || input == "+inf" || input == "-inf");
+		char ch = input[1];
+		print_char(ch);
+		std::cout << "int: " << static_cast<int>(ch) << "\n";
+		print_float(static_cast<float>(ch));
+		print_double(static_cast<double>(ch));
 	}
 		
-	void process_int(const std::string& input)
+	void	process_int(const std::string& input)
 	{
 		errno = 0;
 		long intNum = std::strtol(input.c_str(), NULL, 10);
@@ -173,18 +161,12 @@ namespace
 		{
 			print_char(static_cast<int>(intNum));
 			std::cout << "int: " << static_cast<int>(intNum) << "\n";
-			if (intNum < -std::numeric_limits<float>::max() || intNum > std::numeric_limits<float>::max())
-				std::cout << "float: impossible\n";
-			else
-				print_float(static_cast<double>(intNum));
-			if (intNum < -std::numeric_limits<double>::max() || intNum > std::numeric_limits<double>::max())
-				std::cout << "double: impossible\n";
-			else
-				print_double(static_cast<long double>(intNum));
+			print_float(static_cast<double>(intNum));
+			print_double(static_cast<long double>(intNum));
 		}
 	}
 
-	void process_float(const std::string& input)
+	void	process_float(const std::string& input)
 	{
 		errno = 0;
 		double floatNum = std::strtod(input.c_str(), NULL);
@@ -193,17 +175,24 @@ namespace
 			std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
 		else
 		{
+			int precision = 1;
+			if (input.find('.') != std::string::npos)
+			{
+				size_t dot_pos = input.find('.');
+				size_t f_pos = input.find('f');
+				precision = f_pos - dot_pos - 1;
+			}
 			print_char(static_cast<int>(floatNum));
 			if (floatNum < std::numeric_limits<int>::min() || floatNum > std::numeric_limits<int>::max())
 				std::cout << "int: impossible\n";
 			else
 				std::cout << "int: " << static_cast<int>(floatNum) << "\n";
-			print_float(floatNum);
-			print_double(static_cast<long double>(floatNum));
+			print_float(floatNum, precision);
+			print_double(static_cast<long double>(floatNum), precision);
 		}
 	}
 
-	void process_double(const std::string& input)
+	void	process_double(const std::string& input)
 	{
 		errno = 0;
 		long double doubleNum = std::strtold(input.c_str(), NULL);
@@ -212,17 +201,45 @@ namespace
 			std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
 		else
 		{
+			int precision = 1;
+			if (input.find('.') != std::string::npos)
+			{
+				size_t dot_pos = input.find('.');
+				precision = input.length() - dot_pos - 1;
+			}
 			print_char(static_cast<int>(doubleNum));
 			if (doubleNum < std::numeric_limits<int>::min() || doubleNum > std::numeric_limits<int>::max())
 				std::cout << "int: impossible\n";
 			else
 				std::cout << "int: " << static_cast<int>(doubleNum) << "\n";
-			print_float(static_cast<double>(doubleNum));
-			print_double(doubleNum);
+			print_float(static_cast<double>(doubleNum), precision);
+			print_double(doubleNum, precision);
 		}
 	}
 
-	void print_char(int ch)
+	void	process_special(const std::string& input)
+	{
+		if (input == "nanf" || input == "nan")
+		{
+			std::cout << "char: impossible\nint: impossible\n";
+			print_float(std::numeric_limits<float>::quiet_NaN());
+			print_double(std::numeric_limits<double>::quiet_NaN());
+		}
+		else if (input == "+inff" || input == "+inf")
+		{
+			std::cout << "char: impossible\nint: impossible\n";
+			print_float(std::numeric_limits<float>::infinity());
+			print_double(std::numeric_limits<double>::infinity());
+		}
+		else if (input == "-inff" || input == "-inf")
+		{
+			std::cout << "char: impossible\nint: impossible\n";
+			print_float(-std::numeric_limits<float>::infinity());
+			print_double(-std::numeric_limits<double>::infinity());
+		}
+	}
+
+	void	print_char(int ch)
 	{
 		if (ch < std::numeric_limits<char>::min() || ch > std::numeric_limits<char>::max())
 		{
@@ -235,9 +252,11 @@ namespace
 			std::cout << "char: Non displayable\n";
 		}
 		
-	void print_float(double value)
+	void	print_float(double value, int precision)
 	{
-		if (value < -std::numeric_limits<float>::max() || value > std::numeric_limits<float>::max())
+		std::cout << std::fixed << std::setprecision(precision);
+		if (value && std::abs(value) > std::numeric_limits<float>::max()
+			&& !std::isinf(value))
 		{
 			std::cout << "float: impossible\n";
 			return;
@@ -252,17 +271,15 @@ namespace
 		else if (std::isnan(value))
 			std::cout << "float: nanf\n";
 		else
-		{
-			if (value == std::floor(value))
-				std::cout << "float: " << static_cast<float>(value) << ".0f\n";
-			else
-				std::cout << "float: " << static_cast<float>(value) << "f\n";
-		}
+			std::cout << "float: " << static_cast<float>(value) << "f\n";
+		std::cout.unsetf(std::ios::floatfield);
 	}
 
-	void print_double(long double value)
+	void	print_double(long double value, int precision)
 	{
-		if (value < -std::numeric_limits<double>::max() || value > std::numeric_limits<double>::max())
+		std::cout << std::fixed << std::setprecision(precision);
+		if (value && std::abs(value) > std::numeric_limits<double>::max()
+			&& !std::isinf(value))
 		{
 			std::cout << "double: impossible\n";
 			return;
@@ -277,11 +294,7 @@ namespace
 		else if (std::isnan(value))
 			std::cout << "double: nan\n";
 		else
-		{
-			if (value == std::floor(value))
-				std::cout << "double: " << static_cast<double>(value) << ".0\n";
-			else
-				std::cout << "double: " << static_cast<double>(value) << "\n";
-		}
+			std::cout << "double: " << static_cast<double>(value) << "\n";
+		std::cout.unsetf(std::ios::floatfield);
 	}
 }
