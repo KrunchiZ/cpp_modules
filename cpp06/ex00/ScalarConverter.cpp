@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 13:08:12 by kchiang           #+#    #+#             */
-/*   Updated: 2026/09/04 18:25:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/09/08 17:57:26 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 #include <limits>
 #include <cctype>
 #include <cmath>
-#include <cstdlib>
-#include <cerrno>
+#include <sstream>
 
 namespace
 {
@@ -33,9 +32,9 @@ namespace
 	void	process_float(const std::string& input);
 	void	process_double(const std::string& input);
 	void	process_special(const std::string& input);
-	void	print_char(int ch);	
-	void	print_float(double value, int precision = 1);
-	void	print_double(long double value, int precision = 1);	
+	void	print_char(char ch);	
+	void	print_float(float value, int precision = 1);
+	void	print_double(double value, int precision = 1);	
 }
 
 ScalarConverter::ScalarConverter() {}
@@ -152,26 +151,29 @@ namespace
 		
 	void	process_int(const std::string& input)
 	{
-		errno = 0;
-		long intNum = std::strtol(input.c_str(), NULL, 10);
-		if (errno == ERANGE
-			|| (intNum < std::numeric_limits<int>::min() || intNum > std::numeric_limits<int>::max()))
+		std::stringstream ss(input);
+		int intNum;
+		ss >> intNum;
+		if (ss.fail())
 			std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
 		else
 		{
-			print_char(static_cast<int>(intNum));
+			if (intNum < std::numeric_limits<char>::min() || intNum > std::numeric_limits<char>::max())
+				std::cout << "char: impossible\n";
+			else
+				print_char(static_cast<char>(intNum));
 			std::cout << "int: " << static_cast<int>(intNum) << "\n";
-			print_float(static_cast<double>(intNum));
-			print_double(static_cast<long double>(intNum));
+			print_float(static_cast<float>(intNum));
+			print_double(static_cast<double>(intNum));
 		}
 	}
 
 	void	process_float(const std::string& input)
 	{
-		errno = 0;
-		double floatNum = std::strtod(input.c_str(), NULL);
-		if (errno == ERANGE
-			|| (floatNum && std::abs(floatNum) > std::numeric_limits<float>::max()))
+		std::stringstream ss(input);
+		float floatNum;
+		ss >> floatNum;
+		if (ss.fail())
 			std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
 		else
 		{
@@ -182,22 +184,25 @@ namespace
 				size_t f_pos = input.find('f');
 				precision = f_pos - dot_pos - 1;
 			}
-			print_char(static_cast<int>(floatNum));
+			if (floatNum < std::numeric_limits<char>::min() || floatNum > std::numeric_limits<char>::max())
+				std::cout << "char: impossible\n";
+			else
+				print_char(static_cast<char>(floatNum));
 			if (floatNum < std::numeric_limits<int>::min() || floatNum > std::numeric_limits<int>::max())
 				std::cout << "int: impossible\n";
 			else
 				std::cout << "int: " << static_cast<int>(floatNum) << "\n";
 			print_float(floatNum, precision);
-			print_double(static_cast<long double>(floatNum), precision);
+			print_double(static_cast<double>(floatNum), precision);
 		}
 	}
 
 	void	process_double(const std::string& input)
 	{
-		errno = 0;
-		long double doubleNum = std::strtold(input.c_str(), NULL);
-		if (errno == ERANGE
-			|| (doubleNum && std::abs(doubleNum) > std::numeric_limits<double>::max()))
+		std::stringstream ss(input);
+		double doubleNum;
+		ss >> doubleNum;
+		if (ss.fail())
 			std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
 		else
 		{
@@ -207,12 +212,18 @@ namespace
 				size_t dot_pos = input.find('.');
 				precision = input.length() - dot_pos - 1;
 			}
-			print_char(static_cast<int>(doubleNum));
+			if (doubleNum < std::numeric_limits<char>::min() || doubleNum > std::numeric_limits<char>::max())
+				std::cout << "char: impossible\n";
+			else
+				print_char(static_cast<char>(doubleNum));
 			if (doubleNum < std::numeric_limits<int>::min() || doubleNum > std::numeric_limits<int>::max())
 				std::cout << "int: impossible\n";
 			else
 				std::cout << "int: " << static_cast<int>(doubleNum) << "\n";
-			print_float(static_cast<double>(doubleNum), precision);
+			if (doubleNum && (std::fabs(doubleNum) > std::numeric_limits<float>::max()))
+				std::cout << "float: impossible\n";
+			else
+				print_float(static_cast<float>(doubleNum), precision);
 			print_double(doubleNum, precision);
 		}
 	}
@@ -239,28 +250,17 @@ namespace
 		}
 	}
 
-	void	print_char(int ch)
+	void	print_char(char ch)
 	{
-		if (ch < std::numeric_limits<char>::min() || ch > std::numeric_limits<char>::max())
-		{
-			std::cout << "char: impossible\n";
-			return;
-		}
 		if (std::isprint(ch))
-			std::cout << "char: '" << static_cast<char>(ch) << "'\n";
+			std::cout << "char: '" << ch << "'\n";
 		else
 			std::cout << "char: Non displayable\n";
-		}
+	}
 		
-	void	print_float(double value, int precision)
+	void	print_float(float value, int precision)
 	{
 		std::cout << std::fixed << std::setprecision(precision);
-		if (value && std::abs(value) > std::numeric_limits<float>::max()
-			&& !std::isinf(value))
-		{
-			std::cout << "float: impossible\n";
-			return;
-		}
 		if (std::isinf(value))
 		{
 			if (std::signbit(value))
@@ -271,19 +271,13 @@ namespace
 		else if (std::isnan(value))
 			std::cout << "float: nanf\n";
 		else
-			std::cout << "float: " << static_cast<float>(value) << "f\n";
+			std::cout << "float: " << value << "f\n";
 		std::cout.unsetf(std::ios::floatfield);
 	}
 
-	void	print_double(long double value, int precision)
+	void	print_double(double value, int precision)
 	{
 		std::cout << std::fixed << std::setprecision(precision);
-		if (value && std::abs(value) > std::numeric_limits<double>::max()
-			&& !std::isinf(value))
-		{
-			std::cout << "double: impossible\n";
-			return;
-		}
 		if (std::isinf(value))
 		{
 			if (std::signbit(value))
@@ -294,7 +288,7 @@ namespace
 		else if (std::isnan(value))
 			std::cout << "double: nan\n";
 		else
-			std::cout << "double: " << static_cast<double>(value) << "\n";
+			std::cout << "double: " << value << "\n";
 		std::cout.unsetf(std::ios::floatfield);
 	}
 }
