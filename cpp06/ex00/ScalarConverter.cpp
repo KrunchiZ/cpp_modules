@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 13:08:12 by kchiang           #+#    #+#             */
-/*   Updated: 2026/09/09 13:24:48 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/09/09 12:58:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ namespace
 
 	bool	isFloat(const std::string& input)
 	{
-		bool hasF = false;
 		bool hasDot = false;
 		if (input[input.length() - 1] != 'f')
 			return (false);
@@ -109,12 +108,11 @@ namespace
 			if (!std::isdigit(input[i]))
 			{
 				if (i == input.length() - 1 && input[i] == 'f')
-					hasF = true;
-				else
-					return (false);
+					continue;
+				return (false);
 			};
 		}
-		return (hasF);
+		return (true);
 	}
 
 	bool	isDouble(const std::string& input)
