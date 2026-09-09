@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 13:08:12 by kchiang           #+#    #+#             */
-/*   Updated: 2026/09/08 17:57:26 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/09/09 12:58:34 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ namespace
 	void	process_special(const std::string& input);
 	void	print_char(char ch);	
 	void	print_float(float value, int precision = 1);
-	void	print_double(double value, int precision = 1);	
+	void	print_double(double value, int precision = 1);
+	void	print_all_impossible();
 }
 
 ScalarConverter::ScalarConverter() {}
@@ -155,7 +156,7 @@ namespace
 		int intNum;
 		ss >> intNum;
 		if (ss.fail())
-			std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
+			print_all_impossible();
 		else
 		{
 			if (intNum < std::numeric_limits<char>::min() || intNum > std::numeric_limits<char>::max())
@@ -174,7 +175,7 @@ namespace
 		float floatNum;
 		ss >> floatNum;
 		if (ss.fail())
-			std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
+			print_all_impossible();
 		else
 		{
 			int precision = 1;
@@ -203,7 +204,7 @@ namespace
 		double doubleNum;
 		ss >> doubleNum;
 		if (ss.fail())
-			std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
+			print_all_impossible();
 		else
 		{
 			int precision = 1;
@@ -290,5 +291,10 @@ namespace
 		else
 			std::cout << "double: " << value << "\n";
 		std::cout.unsetf(std::ios::floatfield);
+	}
+
+	void	print_all_impossible()
+	{
+		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible\n";
 	}
 }
