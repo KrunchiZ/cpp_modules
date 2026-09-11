@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 16:26:16 by kchiang           #+#    #+#             */
-/*   Updated: 2026/09/11 17:36:12 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/09/11 18:12:07 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ public:
 
 	const unsigned int& size() const {return (m_size);}
 
-	T& operator[](const unsigned int& index)
+	T& operator[](const int& index)
 	{
-		if (index >= m_size)
+		if (index < 0 || static_cast<unsigned int>(index) >= m_size)
 			throw (std::out_of_range("Index out of range"));
 		return (m_array[index]);
 	}
 
-	const T& operator[](const unsigned int& index) const
+	const T& operator[](const int& index) const
 	{
-		if (index >= m_size)
+		if (index < 0 || static_cast<unsigned int>(index) >= m_size)
 			throw (std::out_of_range("Index out of range"));
 		return (m_array[index]);
 	}
@@ -73,5 +73,12 @@ std::ostream& operator<<(std::ostream& out, const Array<T>& arr)
 		out << arr[i] << " ";
 	return (out);
 }
+// Can put this operator<< overload implementation into a tpp file
+// and include it here at the bottom.
+// 
+// Example:
+// template <typename T>
+// std::ostream& operator<<(std::ostream& out, const Array<T>& arr);
+// #include "Array.tpp"
 
 #endif
