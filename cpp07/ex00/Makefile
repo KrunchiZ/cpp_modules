@@ -1,9 +1,8 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-NAME		= convert
-SRC			= main.cpp			\
-			  ScalarConverter.cpp
+NAME		= ex00
+SRC			= main.cpp
 
 OBJS_DIR	= build/
 
