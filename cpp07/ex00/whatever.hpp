@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 14:24:42 by kchiang           #+#    #+#             */
-/*   Updated: 2026/09/11 15:34:55 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/09/11 15:46:16 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 template <typename T>
 void	swap(T& a, T& b)
 {
+	if (&a == &b)
+		return ;
 	T temp = a;
 	a = b;
 	b = temp;
