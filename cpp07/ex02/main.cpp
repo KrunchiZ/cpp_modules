@@ -42,5 +42,11 @@ int main(int, char**)
     {
         std::cerr << e.what() << '\n';
     }
+
+    Array<std::string> strings(3);
+    strings[0] = "Hello";
+    strings[1] = "World";
+    strings[2] = "from 42KL!";
+    std::cout << "\nstrings: " << strings << "\n\n";
     return (0);
 }
