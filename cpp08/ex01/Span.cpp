@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/26 15:18:16 by kchiang           #+#    #+#             */
-/*   Updated: 2026/09/26 16:21:39 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/09/26 16:56:36 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	Span::addNumber(int number)
 	m_vector.push_back(number);
 }
 
-const int&	Span::shortestSpan() const
+int	Span::shortestSpan() const
 {
 	if (m_vector.size() < 2)
 		throw std::logic_error("Logic error: Not enough numbers to find span.");
@@ -59,7 +59,7 @@ const int&	Span::shortestSpan() const
 	return (shortest_span);
 }
 
-const int&	Span::longestSpan() const
+int	Span::longestSpan() const
 {
 	if (m_vector.size() < 2)
 		throw std::logic_error("Logic error: Not enough numbers to find span.");
@@ -67,7 +67,7 @@ const int&	Span::longestSpan() const
 		*std::min_element(m_vector.begin(), m_vector.end()));
 }
 
-std::ostream&	operator<<(std::ostream &out, const Span &span)
+std::ostream&	operator<<(std::ostream& out, const Span& span)
 {
 	out << "[ ";
 	for (size_t i = 0; i < span.size(); ++i)
