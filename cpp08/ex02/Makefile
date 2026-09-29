@@ -2,7 +2,7 @@ CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
 NAME		= ex02
-SRC			= main.cpp	MutantStack.cpp
+SRC			= main.cpp
 
 OBJS_DIR	= build/
 
