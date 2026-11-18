@@ -13,10 +13,7 @@
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
 
-#include <fstream>
-#include <iostream>
 #include <map>
-#include <sstream>
 #include <string>
 #include <stdexcept>
 
@@ -33,6 +30,21 @@ public:
 
 	void	loadData(const std::string& file);
 	void	processInput(const std::string& file);
+
+private:
+	std::map<std::string, double> data;
+};
+
+class BitcoinExchange::InvalidFileException : public std::runtime_error
+{
+public:
+	InvalidFileException(const std::string& message);
+};
+
+class BitcoinExchange::InvalidDateException : public std::runtime_error
+{
+public:
+	InvalidDateException(const std::string& message);
 };
 
 #endif
