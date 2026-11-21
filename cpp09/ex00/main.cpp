@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/21 19:05:27 by kchiang           #+#    #+#             */
-/*   Updated: 2026/11/21 22:34:31 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/11/21 23:00:13 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	main(int argc, char* argv[])
 			std::cerr << "Error: " << e.what() << '\n';
 		}
 	}
-	if (!infile)
+	if (!infile.eof())
 	{
-		std::cerr << "Error: Failed to read file: " << argv[1] << '\n';
+		std::cerr << "Error: Problem reading file: " << argv[1] << '\n';
 		return (1);
 	}
 	return (0);

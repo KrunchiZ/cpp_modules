@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:57:11 by kchiang           #+#    #+#             */
-/*   Updated: 2026/11/21 22:34:28 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/11/21 23:06:37 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ namespace
 
 BitcoinExchange::BitcoinExchange() : data() {}
 BitcoinExchange::~BitcoinExchange() {}
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : data(other.data) {}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
+	: data(other.data) {}
 
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& other)
 {
@@ -52,7 +54,7 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& other)
 
 void	BitcoinExchange::loadData(const std::string& file)
 {
-	std::ifstream data_file(file);
+	std::ifstream data_file(file.c_str());
 	if (!data_file.is_open())
 		throw std::runtime_error("Failed to open file: " + file);
 
@@ -64,13 +66,12 @@ void	BitcoinExchange::loadData(const std::string& file)
 		double value;
 		std::string date;
 		std::stringstream ss(line);
-
-		if (!(ss >> date) || ss.get() != ',' || !(ss >> value) || !(ss.eof()))
-			throw std::runtime_error("Invalid line format: " + line);
+		if (!(std::getline(ss, date, ',')) || !(ss >> value) || !(ss.eof()))
+			throw std::runtime_error("Invalid line in data: " + line);
 		data[date] = value;
 	}
-	if (!data_file)
-		throw std::runtime_error("Failed to read file: " + file);
+	if (!data_file.eof())
+		throw std::runtime_error("Problem reading file: " + file);
 }
 
 void	BitcoinExchange::processInput(const std::string& line)
@@ -100,6 +101,5 @@ void	BitcoinExchange::processInput(const std::string& line)
 	}
 	else
 		exchangeRate = data[date];
-	double result = value * exchangeRate;
-	std::cout << date << " => " << value << " = " << result << '\n';
+	std::cout << date << " => " << value << " = " << value * exchangeRate << '\n';
 }
