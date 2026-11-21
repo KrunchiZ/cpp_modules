@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:57:11 by kchiang           #+#    #+#             */
-/*   Updated: 2026/11/06 10:57:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/11/21 22:34:28 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,29 @@
 #include <stdexcept>
 #include <fstream>
 #include <sstream>
+#include <iostream>
 #include <string>
+#include <map>
 
-BitcoinExchange::InvalidFileException::InvalidFileException(const std::string& message)
-	: std::runtime_error(message) {}
+namespace
+{
+	bool	date_isInvalid(const std::string& date)
+	{
+		if (date.length() != 10 || date[4] != '-' || date[7] != '-')
+			return (true);
 
-BitcoinExchange::InvalidDateException::InvalidDateException(const std::string& message)
-	: std::runtime_error(message) {}
+		int year, month, day;
+		char dash1, dash2;
+		std::stringstream ss(date);
+		if (!(ss >> year >> dash1 >> month >> dash2 >> day) || dash1 != '-'
+			|| dash2 != '-' || !ss.eof())
+			return (true);
+		if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31
+			|| (month == 2 && day > 29) || (month % 2 == 0 && day > 30))
+			return (true);
+		return (false);
+	}
+}
 
 BitcoinExchange::BitcoinExchange() : data() {}
 BitcoinExchange::~BitcoinExchange() {}
@@ -36,22 +52,54 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& other)
 
 void	BitcoinExchange::loadData(const std::string& file)
 {
-	std::ifstream infile(file);
-	if (!infile.is_open())
-		throw InvalidFileException("Failed to open file: " + file);
+	std::ifstream data_file(file);
+	if (!data_file.is_open())
+		throw std::runtime_error("Failed to open file: " + file);
 
 	std::string line;
-	if (!std::getline(infile, line) || line != "date,exchange_rate")
-		throw InvalidFileException("Invalid header in file: " + file);
-	while (std::getline(infile, line))
+	if (!std::getline(data_file, line) || line != "date,exchange_rate")
+		throw std::runtime_error("Invalid header in file: " + file);
+	while (std::getline(data_file, line))
 	{
-		std::stringstream ss(line);
-		std::string date;
 		double value;
-// need to check for comma
-		if (!(ss >> date >> value))
-			throw InvalidFileException("Invalid line format: " + line);
+		std::string date;
+		std::stringstream ss(line);
 
+		if (!(ss >> date) || ss.get() != ',' || !(ss >> value) || !(ss.eof()))
+			throw std::runtime_error("Invalid line format: " + line);
 		data[date] = value;
 	}
+	if (!data_file)
+		throw std::runtime_error("Failed to read file: " + file);
+}
+
+void	BitcoinExchange::processInput(const std::string& line)
+{
+	char ch;
+	double value;
+	std::string date;
+	std::stringstream ss(line);
+
+	if (!(ss >> date) || date_isInvalid(date) || !(ss >> ch) || ch != '|'
+		|| !(ss >> value) || !(ss.eof()))
+		throw std::runtime_error("bad input => " + line);
+	if (value < 0)
+		throw std::runtime_error("not a positive number.");
+	if (value > 1000)
+		throw std::runtime_error("too large a number.");
+
+	double exchangeRate = 0.0;
+	if (data.find(date) == data.end())
+	{
+		std::map<std::string, double>::iterator it;
+		it = data.lower_bound(date);
+		if (it == data.begin())
+			throw std::runtime_error("no exchange rate available for: " + date);
+		--it;
+		exchangeRate = it->second;
+	}
+	else
+		exchangeRate = data[date];
+	double result = value * exchangeRate;
+	std::cout << date << " => " << value << " = " << result << '\n';
 }

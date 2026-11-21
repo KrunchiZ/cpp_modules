@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:56:30 by kchiang           #+#    #+#             */
-/*   Updated: 2026/11/06 17:52:13 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/11/21 22:22:07 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
 class BitcoinExchange
 {
 public:
-	class InvalidFileException;
-	class InvalidDateException;
-
 	BitcoinExchange();
 	~BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& other);
@@ -33,18 +30,6 @@ public:
 
 private:
 	std::map<std::string, double> data;
-};
-
-class BitcoinExchange::InvalidFileException : public std::runtime_error
-{
-public:
-	InvalidFileException(const std::string& message);
-};
-
-class BitcoinExchange::InvalidDateException : public std::runtime_error
-{
-public:
-	InvalidDateException(const std::string& message);
 };
 
 #endif
