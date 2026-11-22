@@ -1,8 +1,8 @@
 CPP			= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 
-NAME		= btc
-SRC			= main.cpp	BitcoinExchange.cpp
+NAME		= RPN
+SRC			= main.cpp	RPN.cpp
 
 OBJS_DIR	= build/
 
