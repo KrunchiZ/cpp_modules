@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:57:11 by kchiang           #+#    #+#             */
-/*   Updated: 2026/11/21 23:06:37 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/11/22 13:43:32 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ namespace
 	}
 }
 
-BitcoinExchange::BitcoinExchange() : data() {}
+BitcoinExchange::BitcoinExchange() : m_data() {}
 BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
-	: data(other.data) {}
+	: m_data(other.m_data) {}
 
 BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& other)
 {
 	if (this == &other)
 		return (*this);
-	data = other.data;
+	m_data = other.m_data;
 	return (*this);
 }
 
@@ -68,7 +68,7 @@ void	BitcoinExchange::loadData(const std::string& file)
 		std::stringstream ss(line);
 		if (!(std::getline(ss, date, ',')) || !(ss >> value) || !(ss.eof()))
 			throw std::runtime_error("Invalid line in data: " + line);
-		data[date] = value;
+		m_data[date] = value;
 	}
 	if (!data_file.eof())
 		throw std::runtime_error("Problem reading file: " + file);
@@ -90,16 +90,16 @@ void	BitcoinExchange::processInput(const std::string& line)
 		throw std::runtime_error("too large a number.");
 
 	double exchangeRate = 0.0;
-	if (data.find(date) == data.end())
+	if (m_data.find(date) == m_data.end())
 	{
 		std::map<std::string, double>::iterator it;
-		it = data.lower_bound(date);
-		if (it == data.begin())
+		it = m_data.lower_bound(date);
+		if (it == m_data.begin())
 			throw std::runtime_error("no exchange rate available for: " + date);
 		--it;
 		exchangeRate = it->second;
 	}
 	else
-		exchangeRate = data[date];
+		exchangeRate = m_data[date];
 	std::cout << date << " => " << value << " = " << value * exchangeRate << '\n';
 }
