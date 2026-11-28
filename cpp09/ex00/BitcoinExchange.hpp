@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:56:30 by kchiang           #+#    #+#             */
-/*   Updated: 2026/11/22 13:42:53 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/11/28 20:04:37 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 class BitcoinExchange
 {
 public:
-	BitcoinExchange();
-	~BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange& other);
-	BitcoinExchange&	operator=(const BitcoinExchange& other);
+    BitcoinExchange();
+    ~BitcoinExchange();
+    BitcoinExchange(const BitcoinExchange& other);
+    BitcoinExchange&	operator=(const BitcoinExchange& other);
 
-	void	loadData(const std::string& file);
-	void	processInput(const std::string& file);
+    void	loadData(const std::string& file);
+    void	processInput(const std::string& file);
 
 private:
-	std::map<std::string, double> m_data;
+    std::map<std::string, double> m_data;
 };
 
 #endif

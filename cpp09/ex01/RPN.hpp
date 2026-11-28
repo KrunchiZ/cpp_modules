@@ -6,7 +6,7 @@
 /*   By: kchiang <kchiang@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/22 13:40:06 by kchiang           #+#    #+#             */
-/*   Updated: 2026/11/22 14:43:19 by kchiang          ###   ########.fr       */
+/*   Updated: 2026/11/28 20:05:11 by kchiang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 class RPN
 {
 public:
-	RPN();
-	~RPN();
-	RPN(const RPN& other);
-	RPN& operator=(const RPN& other);
+    RPN();
+    ~RPN();
+    RPN(const RPN& other);
+    RPN& operator=(const RPN& other);
 
-	int evaluate(std::string expression);
+    int evaluate(std::string expression);
 
 private:
-	std::stack<int> m_operands;
+    std::stack<int> m_operands;
 
-	void performOperation(char op);
+    void performOperation(char op);
 };
 
 #endif
